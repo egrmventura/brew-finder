@@ -345,13 +345,13 @@ contributing_signals (jsonb), model_version
 
 The system splits cleanly into a batch enrichment pipeline and a low-latency geo serving layer. Don't try to make one tool do both.
 
-**Serving:** Postgres 16 + PostGIS on Neon or Supabase. `ST_DWithin` on a GiST-indexed geography column handles radius search; `pg_trgm` handles fuzzy beer-name matching. Both problems solved by one database. Resist BigQuery here — it's the wrong shape for per-user point lookups and the cost model is hostile to it.
+**Serving:** Postgres 18 + PostGIS on Neon or Supabase. `ST_DWithin` on a GiST-indexed geography column handles radius search; `pg_trgm` handles fuzzy beer-name matching. Both problems solved by one database. Resist BigQuery here — it's the wrong shape for per-user point lookups and the cost model is hostile to it.
 
 **Pipeline:** dbt over DuckDB locally, materializing to Postgres. Staging → intermediate → marts. Source freshness tests on every ingested feed. If the enrichment volume ever justifies it, swap the compute for BigQuery without touching the model layer — which is the point of keeping dbt in the middle.
 
 **Orchestration:** GitHub Actions on a cron for the first year. Dagster only when the DAG genuinely outgrows it.
 
-**API:** Next.js 15 App Router, TypeScript, route handlers. One repo, one language, server components for the initial map render.
+**API:** Next.js 16 App Router, TypeScript, route handlers. One repo, one language, server components for the initial map render.
 
 **Web:** Next.js + MapLibre GL (not Mapbox — MapLibre avoids per-load billing surprises). Tailwind.
 

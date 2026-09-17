@@ -18,6 +18,8 @@ Violating any of these is wrong by construction, not a style nit. Reject them in
 
 6. **No commerce.** No cart, checkout, delivery, or reservation, in any surface. Remaining an information service is what keeps us outside three-tier licensing entirely; facilitating a transaction inherits those obligations in every state we operate in. Full non-goal list: `PLAN.md` §0.4.
 
+7. **Never invent values.** Never fabricate version numbers, URLs, dates, or identifiers. If a value is needed and not available, stop and ask. A placeholder written into a file is indistinguishable from a verified one the moment the session ends.
+
 ## Schema rules
 
 Every fact table declares its grain — in a comment and in `docs/architecture.md`, in a sentence beginning `Grain:`. A schema change that leaves the grain unstated or ambiguous is incomplete.
@@ -36,9 +38,9 @@ Tests come before implementation in `packages/scoring` and in any identity-resol
 
 ## Stack
 
-- Node 20+, pnpm 9+, TypeScript strict
-- Next.js 15 App Router (`apps/web`), Expo / React Native (`apps/mobile`)
-- PostgreSQL 16 + PostGIS + `pg_trgm` (serving layer)
+- Node 22.13+, pnpm 12+, TypeScript strict
+- Next.js 16 App Router (`apps/web`), Expo / React Native (`apps/mobile`)
+- PostgreSQL 18 + PostGIS + `pg_trgm` (serving layer)
 - dbt over DuckDB locally, materializing to Postgres (enrichment pipeline)
 - MapLibre GL for maps (not Mapbox — avoids per-load billing surprises)
 - GitHub Actions on cron for orchestration
