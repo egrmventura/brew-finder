@@ -28,7 +28,15 @@ Validate any schema change against the constraints above before writing the migr
 
 ## Testing
 
+Work in `packages/scoring` and on identity resolution does not begin until the `entity-resolution` and `scoring-eval-protocol` skills exist. If asked to start either, name the missing skill and stop.
+
 Tests come before implementation in `packages/scoring` and in any identity-resolution code. These are the two places where generated code looks correct and is subtly wrong — a fuzzy matcher that silently collapses two distinct beers, or a weighting that emits confident scores from near-zero evidence. Write fixtures with known-correct expected values first, every time. Elsewhere, normal review suffices.
+
+## Review
+
+Review runs in two passes and neither substitutes for the other: `/code-review` for correctness, then `constraint-audit` for project constraints. A diff can be entirely bug-free and still flatten `dim_brewer` to Type 1; it can be constraint-clean and still have an off-by-one. Run both, report them separately. A change is not ready to merge until both have run.
+
+Report checklist items individually with their evidence. "All checks passed" is indistinguishable from an unrun check.
 
 ## Naming conventions
 
@@ -65,3 +73,5 @@ Ceiling is Opus 5. The `fable` and `best` aliases are prohibited — `best` reso
 - Full schema, grain definitions, and the scoring function: `docs/architecture.md`
 
 Both are stubs as of Phase 0. Until they're written, `PLAN.md` §5 (dimensional model) and §9 (workflow) are the source.
+
+`PLAN.md` describes intent, not progress. Current state of the work is in `docs/handoffs/` — read the most recent note at the start of every session. When `PLAN.md` and this file disagree on behavior, this file wins and `PLAN.md` gets corrected. When either disagrees with an ADR, the ADR wins — ADRs are dated and represent later thinking.
