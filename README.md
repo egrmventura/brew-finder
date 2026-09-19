@@ -43,9 +43,9 @@ Inside `docs/`:
 
 ### Prerequisites
 
-- Node.js 20+
-- pnpm 9+
-- PostgreSQL 16 with the PostGIS and `pg_trgm` extensions
+- Node.js 22.13+
+- pnpm 12+
+- PostgreSQL 18 with the PostGIS and `pg_trgm` extensions
 - A Google Places API key (Phase 1 onward)
 
 ### Setup
@@ -73,7 +73,7 @@ pnpm dbt:test       # includes source freshness checks
 
 ```
 apps/
-  web/              Next.js 15 — map, search, filters
+  web/              Next.js 16 — map, search, filters
   mobile/           Expo / React Native
 packages/
   types/            Shared TypeScript types; the frontend-facing contract
