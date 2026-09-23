@@ -51,23 +51,27 @@ Report checklist items individually with their evidence. "All checks passed" is 
 - Node 22.13+, pnpm 12+, TypeScript strict
 - Next.js 16 App Router (`apps/web`)
 - PostgreSQL 18 + PostGIS + `pg_trgm` (serving layer)
-- dbt over DuckDB locally, materializing to Postgres (enrichment pipeline)
+- dbt-core with the Postgres adapter, targeting that same Postgres directly — no DuckDB (enrichment pipeline, ADR-0006)
 - MapLibre GL for maps (not Mapbox — avoids per-load billing surprises)
 - GitHub Actions on cron for orchestration
 
 ## Commands
 
-```
-pnpm test        pnpm typecheck    pnpm lint
+```text
+pnpm lint:docs   pnpm test         pnpm typecheck    pnpm lint
 pnpm dev         pnpm db:migrate   pnpm db:seed
 pnpm dbt:run     pnpm dbt:test
 ```
 
-Run `pnpm typecheck && pnpm lint && pnpm test` before declaring any work complete.
+**The required check, until WP1 creates TypeScript packages, is `pnpm lint:docs`.** Run it before declaring any work complete. It runs markdownlint over `*.md` and `docs/**`, configured in `.markdownlint-cli2.jsonc`.
+
+`pnpm typecheck`, `pnpm lint`, and `pnpm test` join the required check as soon as they have something to check. `typecheck` and `lint` join when the first package has TypeScript source, and `test` joins when the first test exists. From then on the check is `pnpm lint:docs && pnpm typecheck && pnpm lint && pnpm test`. Until then those three fail with no script to run. That failure is honest: never add a script that passes on nothing just to turn them green.
 
 ## Model policy
 
-Ceiling is Opus 5. The `fable` and `best` aliases are prohibited — `best` resolves to a Fable model where available, silently exceeding the ceiling. No agent, command, or skill may name a model above `opus`.
+The ceiling is the Opus tier: whatever the `opus` alias resolves to. The `fable` and `best` aliases are prohibited — `best` resolves to a Fable model where available, silently exceeding the ceiling. No agent, command, or skill may name a model above `opus`.
+
+The ceiling is stated as a tier, not a version, because the allowlist in `.claude/settings.json` is written in aliases and `opus` moves with releases. It resolved to Opus 5.5 on 2026-09-23, which a fixed "Opus 5" contradicted.
 
 ## More detail
 

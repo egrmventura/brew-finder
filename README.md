@@ -5,6 +5,7 @@
 Search by beer or by style, get nearby stores and taprooms ranked by how likely they are to have it, filtered to what's open. Built on the premise that retail beer inventory isn't published anywhere — so availability is a scored prediction over real signals, never an inventory claim.
 
 **Scope:**
+
 - **Stores are in New Jersey only.** Beers and brewers come from anywhere in the US ([ADR-0003](./docs/adr/0003-nj-retail-national-beer-scope.md)).
 - **Non-commercial and open source.** The code is MIT-licensed and built for anyone to self-host ([ADR-0001](./docs/adr/0001-non-commercial-free-sources-only.md)).
 
@@ -28,7 +29,7 @@ Search by beer or by style, get nearby stores and taprooms ranked by how likely 
 Four documents, four audiences. They are deliberately not merged.
 
 | File | Audience | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | **README.md** (this file) | Anyone arriving at the repo | What this is, how to run it, where to go next |
 | **[CLAUDE.md](./CLAUDE.md)** | Claude Code, every session | Hard operating constraints. Short by design — it's read every time |
 | **[PLAN.md](./PLAN.md)** | Humans and agents, by section | Design source of record: mission, research, schema, phases |
@@ -37,11 +38,11 @@ Four documents, four audiences. They are deliberately not merged.
 Inside `docs/`:
 
 | File | Contents |
-|---|---|
+| --- | --- |
 | [`architecture.md`](./docs/architecture.md) | Dimensional model, scoring function, pipeline/serving split |
 | [`data-sources.md`](./docs/data-sources.md) | Source register with tiers, licenses, and verification dates |
 | [`taxonomy-decisions.md`](./docs/taxonomy-decisions.md) | Index of classification ADRs |
-| [`models.md`](./docs/models.md) | Which Claude model runs which work, and the Opus 5 ceiling |
+| [`models.md`](./docs/models.md) | Which Claude model runs which work, and the Opus-tier ceiling |
 | [`glossary.md`](./docs/glossary.md) | Domain terms — bbl, COLA, GTIN, three-tier, SCD2, grain |
 | [`adr/`](./docs/adr/) | Architecture decision records. ADR-0001 to ADR-0005 set the current scope, and an ADR wins where it disagrees with `PLAN.md` or `CLAUDE.md` |
 | [`handoffs/`](./docs/handoffs/) | Dated session notes — the actual current state |
@@ -71,17 +72,18 @@ pnpm dev
 ### Common commands
 
 ```bash
+pnpm lint:docs      # markdownlint over *.md and docs/ — the required check today (CLAUDE.md)
 pnpm dev            # web app, local
-pnpm test           # all packages
-pnpm typecheck
-pnpm lint
+pnpm test           # all packages — fails until a package has tests
+pnpm typecheck      # fails until a package has TypeScript source
+pnpm lint           # fails until a package has TypeScript source
 pnpm dbt:run        # build the enrichment pipeline
 pnpm dbt:test       # includes source freshness checks
 ```
 
 ## Repository layout
 
-```
+```text
 apps/
   web/              Next.js 16 — map, search, filters
 packages/
@@ -113,7 +115,7 @@ Full detail in [`CLAUDE.md`](./CLAUDE.md). The load-bearing ones:
 
 ## Working with Claude Code
 
-Model routing is governed by [`docs/models.md`](./docs/models.md) and enforced in `.claude/settings.json`. The ceiling is **Opus 5**; the `fable` and `best` aliases are prohibited. Session default is `opusplan` — Opus while planning, Sonnet while executing.
+Model routing is governed by [`docs/models.md`](./docs/models.md) and enforced in `.claude/settings.json`. The ceiling is **the Opus tier** (whatever the `opus` alias resolves to); the `fable` and `best` aliases are prohibited. Session default is `opusplan` — Opus while planning, Sonnet while executing.
 
 Start a session by reading `CLAUDE.md` and the most recent note in `docs/handoffs/`. End it with `/handoff`.
 
@@ -122,7 +124,7 @@ Start a session by reading `CLAUDE.md` and the most recent note in `docs/handoff
 The code is MIT-licensed ([LICENSE](./LICENSE)). The project is non-commercial and uses only free sources that any self-hoster can use without an agreement of their own: no paid APIs, no partner feeds, and no BeerMenus or Untappd ([ADR-0001](./docs/adr/0001-non-commercial-free-sources-only.md)).
 
 | Source | Provides | License / terms |
-|---|---|---|
+| --- | --- | --- |
 | [Open Brewery DB](https://www.openbrewerydb.org/) | US breweries as brewer candidates. Only New Jersey premises become outlets ([ADR-0003](./docs/adr/0003-nj-retail-national-beer-scope.md)) | MIT |
 | [TTB Public COLA Registry](https://www.ttb.gov/regulated-commodities/labeling/cola-public-registry) | National beer label records | US federal, unrestricted |
 | NJ ABC licensee registry | The authoritative list of New Jersey outlets licensed for off-premise sale ([ADR-0004](./docs/adr/0004-outlet-sourcing-abc-registry-and-osm.md)) | Not yet verified; recorded in `docs/data-sources.md` on registration |

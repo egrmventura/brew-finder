@@ -25,7 +25,7 @@ Everything in the product serves that moment. A feature that doesn't help someon
 Falsifiable targets for the pilot market. If we can't hit these, the premise is wrong and we should know early.
 
 | Metric | Target | Why this one |
-|---|---|---|
+| --- | --- | --- |
 | Result density | ≥5 ranked outlets for a style query within a 10-mile radius | Below this the product isn't useful enough to open |
 | Precision at "Very likely" | ≥80% against held-out user confirmations | The top band is the promise; breaking it loses users permanently |
 | "Open now" accuracy | ≥95% | Sending someone to a closed store is the most infuriating possible failure |
@@ -70,7 +70,7 @@ Success in this market is the gate for market two. Don't generalize the outlet a
 This is the design source of record. It is reference material, not a runbook — read the section you need, not the whole thing.
 
 | You want to… | Read |
-|---|---|
+| --- | --- |
 | Understand why classification is modeled the way it is | §1, §2 |
 | Find or evaluate a data source | §3 |
 | Work on the availability model | §4 |

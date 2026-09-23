@@ -32,10 +32,6 @@ dist-ssr
 .next/
 out/
 
-# Expo
-.expo/
-.expo-shared/
-
 # Turbo / build caches
 .turbo
 

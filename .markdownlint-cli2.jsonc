@@ -1,0 +1,14 @@
+// markdownlint for the repo's documentation. Run with `pnpm lint:docs`.
+// This is the enforced part of CLAUDE.md's required check until TypeScript packages exist.
+{
+  "globs": ["*.md", "docs/**/*.md"],
+  "ignores": ["node_modules/**"],
+  "config": {
+    "default": true,
+    // Prose here is written one paragraph per line, so a line-length limit would flag every
+    // paragraph without catching any real defect. All other default rules stay on.
+    "MD013": false,
+    // Tables use padded cells and a padded delimiter row: | a | b | / | --- | --- |
+    "MD060": { "style": "compact" }
+  }
+}

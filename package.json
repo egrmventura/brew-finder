@@ -8,13 +8,17 @@
     "pnpm": ">=12"
   },
   "scripts": {
-    "test": "pnpm -r test",
+    "test": "node scripts/require-workspace-script.mjs test && pnpm -r test",
     "typecheck": "pnpm -r typecheck",
     "lint": "pnpm -r lint",
+    "lint:docs": "markdownlint-cli2",
     "dev": "pnpm -r --parallel dev",
     "db:migrate": "echo 'db:migrate not implemented — Phase 1, see PLAN.md §7' && exit 1",
     "db:seed": "echo 'db:seed not implemented — Phase 1, see PLAN.md §7' && exit 1",
     "dbt:run": "dbt run --project-dir pipeline/dbt",
     "dbt:test": "dbt test --project-dir pipeline/dbt"
+  },
+  "devDependencies": {
+    "markdownlint-cli2": "^0.23.3"
   }
 }
