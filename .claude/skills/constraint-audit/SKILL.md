@@ -1,6 +1,6 @@
 ---
 name: constraint-audit
-description: The review checklist for any change — forbidden columns, grain declarations, SCD2 integrity, source registration, model ceiling, BJCP detachability, non-goal scope, and verification honesty. Use when reviewing a diff, before a commit, during QA, or when asked whether a change is ready to merge.
+description: The review checklist for any change — forbidden columns, grain declarations, SCD2 integrity, source registration, model ceiling, no BJCP content, non-goal scope, and verification honesty. Use when reviewing a diff, before a commit, during QA, or when asked whether a change is ready to merge.
 allowed-tools: Read, Grep, Glob, Bash
 ---
 
@@ -84,9 +84,24 @@ Any new spatial query: `ST_DWithin` in `WHERE` rather than `ST_Distance`, a GiST
 
 Hours stored in local time with an IANA timezone, never UTC, never a fixed offset.
 
-### 9. BJCP detachability
+### 9. No BJCP content
 
-If `dim_style` or any style query changed, the detachability test was run and reported — every `bjcp_code` set to null, application still fully functional. Not run is a failure.
+No BJCP content may enter the repo: codes, style names, guideline prose, commercial examples, vital statistics, or attribute tags (ADR-0002). Check only **added** lines. A diff that removes BJCP references matches on `-` lines, and removal is not a failure.
+
+```bash
+git diff | grep -E '^\+' | grep -inE 'bjcp'
+git diff | grep -E '^\+' | grep -inE 'overall impression|commercial examples|characteristic ingredients|style comparison|vital statistics|mouthfeel'
+```
+
+The second grep looks for the section headings of guideline text. Pasted style descriptions tend to carry them.
+
+**Judge and report every match.**
+- **A reference is a PASS**, with the line cited. A reference names BJCP in order to exclude it, as ADRs, CLAUDE.md, PLAN.md, and skills do.
+- **Content is a FAIL.** Content is anything a BJCP document supplied.
+
+**Then check by hand, because the greps are a floor.**
+- **Style prose.** Any added style description in a seed, fixture, or model is a failure unless the diff shows it was written here. Beyond a short label, it must not read like guideline text.
+- **Vital statistics.** Any added `og`/`fg`/`ibu`/`srm`/`abv` range on a style is a failure unless it cites a registered, license-clean source in `docs/data-sources.md`.
 
 ### 10. Model ceiling
 

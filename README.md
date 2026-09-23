@@ -1,17 +1,26 @@
 # BeerFinder
 
-**Find where you can probably buy the beer you want, near you, right now.**
+**Find where in New Jersey you can probably buy the beer you want, near you, right now.**
 
 Search by beer or by style, get nearby stores and taprooms ranked by how likely they are to have it, filtered to what's open. Built on the premise that retail beer inventory isn't published anywhere — so availability is a scored prediction over real signals, never an inventory claim.
 
-> **Status: pre-alpha.** Phase 0 — foundational documents and repository structure. No application code yet. See [`PLAN.md` §7](./PLAN.md) for the phase roadmap.
+**Scope:**
+- **Stores are in New Jersey only.** Beers and brewers come from anywhere in the US ([ADR-0003](./docs/adr/0003-nj-retail-national-beer-scope.md)).
+- **Non-commercial and open source.** The code is MIT-licensed and built for anyone to self-host ([ADR-0001](./docs/adr/0001-non-commercial-free-sources-only.md)).
+
+> **Status: pre-alpha.** Phase 0: foundational documents, repository structure, and the scope decisions in [ADR-0001 to ADR-0005](./docs/adr/). No application code yet. See [`PLAN.md` §7](./PLAN.md) for the phase roadmap.
 
 ---
 
 ## The idea in three lines
 
 - **Nobody publishes beer inventory.** The APIs that tried are dead — BreweryDB, Punk API, and Drizly all shut down. Untappd's API has been closed to new applications since early 2024.
-- **So we predict instead of look up.** State-level distribution footprint, store archetype, seasonality, observation recency, and brewery proximity combine into a confidence score.
+- **So we predict instead of look up.** A confidence score combines five signals:
+  - whether the beer is distributed in New Jersey at all ([ADR-0003](./docs/adr/0003-nj-retail-national-beer-scope.md))
+  - store archetype
+  - seasonality
+  - how recent the observations are, from manual shelf checks and brewery newsletters ([ADR-0001](./docs/adr/0001-non-commercial-free-sources-only.md), [ADR-0005](./docs/adr/0005-release-data-public-dataset-repo.md))
+  - brewery proximity
 - **And we never overclaim.** Results show confidence bands and an observation date. There is no boolean "in stock" anywhere in this codebase, by design.
 
 ## Documentation map
@@ -34,10 +43,10 @@ Inside `docs/`:
 | [`taxonomy-decisions.md`](./docs/taxonomy-decisions.md) | Index of classification ADRs |
 | [`models.md`](./docs/models.md) | Which Claude model runs which work, and the Opus 5 ceiling |
 | [`glossary.md`](./docs/glossary.md) | Domain terms — bbl, COLA, GTIN, three-tier, SCD2, grain |
-| [`adr/`](./docs/adr/) | Architecture decision records |
+| [`adr/`](./docs/adr/) | Architecture decision records. ADR-0001 to ADR-0005 set the current scope, and an ADR wins where it disagrees with `PLAN.md` or `CLAUDE.md` |
 | [`handoffs/`](./docs/handoffs/) | Dated session notes — the actual current state |
 
-**Start here:** `PLAN.md` §0.1–0.4 for the mission and scope boundaries, then `CLAUDE.md` before writing anything.
+**Start here:** `PLAN.md` §0.1–0.4 for the mission and scope boundaries, ADR-0001 to ADR-0005 for the decisions behind them, then `CLAUDE.md` before writing anything.
 
 ## Quick start
 
@@ -46,13 +55,14 @@ Inside `docs/`:
 - Node.js 22.13+
 - pnpm 12+
 - PostgreSQL 18 with the PostGIS and `pg_trgm` extensions
-- A Google Places API key (Phase 1 onward)
+
+No API keys or paid accounts are needed. Every source is free, and Google Places is not used ([ADR-0001](./docs/adr/0001-non-commercial-free-sources-only.md), [ADR-0004](./docs/adr/0004-outlet-sourcing-abc-registry-and-osm.md)).
 
 ### Setup
 
 ```bash
 pnpm install
-cp .env.example .env          # then fill in DATABASE_URL and GOOGLE_PLACES_API_KEY
+cp .env.example .env          # then fill in DATABASE_URL
 pnpm db:migrate
 pnpm db:seed                  # loads the style taxonomy and Open Brewery DB extract
 pnpm dev
@@ -74,10 +84,9 @@ pnpm dbt:test       # includes source freshness checks
 ```
 apps/
   web/              Next.js 16 — map, search, filters
-  mobile/           Expo / React Native
 packages/
   types/            Shared TypeScript types; the frontend-facing contract
-  api-client/       Typed client consumed by both apps
+  api-client/       Typed client consumed by the web app
   scoring/          The availability model — highest-scrutiny code in the repo
 pipeline/
   dbt/              Staging → intermediate → marts
@@ -88,6 +97,8 @@ docs/               See documentation map above
   agents/           Subagent definitions, each pinned to a model
   commands/         /plan-phase, /new-source, /model-check, /scoring-eval, /handoff
 ```
+
+Brewery release data isn't in this repo. It lives in a separate public dataset repository, updated by scheduled GitHub Actions, and `pipeline/ingest` consumes it as a Tier 1 source ([ADR-0005](./docs/adr/0005-release-data-public-dataset-repo.md)). That repository's name and URL are not chosen yet.
 
 ## Conventions
 
@@ -108,9 +119,19 @@ Start a session by reading `CLAUDE.md` and the most recent note in `docs/handoff
 
 ## Data and licensing
 
-Brewery and outlet data comes from [Open Brewery DB](https://www.openbrewerydb.org/) (MIT), the [TTB Public COLA Registry](https://www.ttb.gov/regulated-commodities/labeling/cola-public-registry) (US federal, unrestricted), Google Places, and OpenStreetMap (ODbL).
+The code is MIT-licensed ([LICENSE](./LICENSE)). The project is non-commercial and uses only free sources that any self-hoster can use without an agreement of their own: no paid APIs, no partner feeds, and no BeerMenus or Untappd ([ADR-0001](./docs/adr/0001-non-commercial-free-sources-only.md)).
 
-**BJCP style guidelines are copyrighted and not licensed for commercial use without written permission.** They are used here as a detachable overlay only; the license-safe base taxonomy is TTB class and type designations under 27 CFR Part 7. See [ADR-0002](./docs/adr/).
+| Source | Provides | License / terms |
+|---|---|---|
+| [Open Brewery DB](https://www.openbrewerydb.org/) | US breweries as brewer candidates. Only New Jersey premises become outlets ([ADR-0003](./docs/adr/0003-nj-retail-national-beer-scope.md)) | MIT |
+| [TTB Public COLA Registry](https://www.ttb.gov/regulated-commodities/labeling/cola-public-registry) | National beer label records | US federal, unrestricted |
+| NJ ABC licensee registry | The authoritative list of New Jersey outlets licensed for off-premise sale ([ADR-0004](./docs/adr/0004-outlet-sourcing-abc-registry-and-osm.md)) | Not yet verified; recorded in `docs/data-sources.md` on registration |
+| OpenStreetMap | Outlet coordinates, opening hours, and a coverage cross-check ([ADR-0004](./docs/adr/0004-outlet-sourcing-abc-registry-and-osm.md)) | ODbL. Requires "© OpenStreetMap contributors" attribution wherever shown, and share-alike on any derived database we distribute |
+| Release dataset (separate public repo) | Brewery release facts extracted from newsletters ([ADR-0005](./docs/adr/0005-release-data-public-dataset-repo.md)) | Not yet chosen |
+
+**Google Places is not used.** Its terms prohibit storing Places content beyond place IDs, and this project warehouses outlet data. Shipping that ingest code to self-hosters would ship a terms violation ([ADR-0004](./docs/adr/0004-outlet-sourcing-abc-registry-and-osm.md)).
+
+**BJCP content is not used.** It is licensed for non-commercial use only, which can't be passed on under MIT. Styles come from TTB class and type designations (27 CFR Part 7) plus a keyword-to-facet map maintained in this repo ([ADR-0002](./docs/adr/0002-remove-bjcp-ttb-and-keyword-facets.md)).
 
 ## Legal
 

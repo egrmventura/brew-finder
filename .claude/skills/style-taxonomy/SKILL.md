@@ -1,43 +1,90 @@
 ---
 name: style-taxonomy
-description: Beer style classification — the TTB base layer, the detachable BJCP overlay, the facet attribute model, and how to add or query a style. Use when working on dim_style, bridge_style_attribute, style seeding, style search, or any filter that resolves a category like "Belgian beers" or "pale lagers".
+description: Beer style classification — the TTB base layer, the keyword-to-facet map seed, the facet attribute model, and how to add or query a style. Use when working on dim_style, bridge_style_attribute, the style_keyword_map seed, style seeding, style search, or any filter that resolves a category like "Belgian beers" or "pale lagers".
 allowed-tools: Read, Write, Edit, Grep, Glob
 ---
 
 # Style taxonomy
 
-Two layers and a facet bridge. The layering exists for a licensing reason, and collapsing it creates a legal exposure baked into the schema rather than a refactor.
+Styles use one base layer, a keyword map, and a facet bridge. **No BJCP content is used anywhere:** no text, codes, style names, vital statistics, or attribute tags (ADR-0002). BJCP is licensed for non-commercial use only, and this repo is MIT-licensed, so BJCP-derived files committed here would be offered under terms we can't grant.
 
 ## The two layers
 
-| Layer | Source | Status | Role |
-|---|---|---|---|
-| **Base** | TTB class and type designations, 27 CFR Part 7 | US federal, unrestricted | Required. Every style has one. Carries the system if the overlay is removed |
-| **Overlay** | BJCP 2021 style guidelines | Copyrighted, **not licensed for commercial use** without written permission we do not have | Optional. Nullable column. Enriches, never load-bearing |
+| Layer | Source | Role |
+|---|---|---|
+| **Base** | TTB class and type designations, 27 CFR Part 7 | Required. US federal, unrestricted. Every style has one |
+| **Keyword map** | `pipeline/dbt/seeds/style_keyword_map.csv`, maintained by hand in this repo | Assigns facets from words in beer names, COLA fanciful names, and TTB class/type text |
 
-`ttb_class_type` is `not null` on `dim_style`. `bjcp_code` is nullable, has no foreign key, and is never part of any index used by a query path.
+`ttb_class_type` is `not null` on `dim_style`.
 
-## The detachability test
+## The keyword map
 
-Before merging any change to `dim_style` or to a query that touches it, verify:
+A dbt seed at `pipeline/dbt/seeds/style_keyword_map.csv` with these columns:
 
-```sql
-UPDATE dim_style SET bjcp_code = NULL, bjcp_style_name = NULL;
+| Column | Meaning |
+|---|---|
+| `keyword` | A normalized word or phrase, lowercase with punctuation stripped, e.g. `pale ale` or `gose` |
+| `attribute_group` | A facet group from the controlled vocabulary below, or `exclude` for exclusion rows |
+| `attribute_code` | A value from that group, or the exclusion reason for exclusion rows |
+| `match_type` | `facet` assigns the facet. `exclude` routes the product out of beer styles (rule 2) |
+| `priority` | An integer tie-breaker between keywords of equal length. Higher wins. It never overrides length (rule 1) |
+
+A keyword with several facets gets one row per facet, and every row for the same keyword carries the same `match_type` and `priority`. The rows below only illustrate the format. They are not seed content:
+
+```csv
+keyword,attribute_group,attribute_code,match_type,priority
+pale ale,color,pale,facet,0
+non-alcoholic,exclude,non-alcoholic,exclude,0
 ```
 
-**After running this, the application must still function completely.** Search works, filters work, every beer still classifies. Only the displayed style names get coarser.
+Real rows are added by reviewed change against the vocabulary below.
 
-If anything breaks, the overlay has become load-bearing and the change must be reworked. Run this against a test database as part of any style-touching change and report the result.
+The map lives only in the seed. **Never hardcode keywords in application code or SQL.** A keyword that isn't in the seed doesn't exist.
 
-### Never
+### Matching
 
-- `bjcp_code` as a primary key, foreign key, or part of a unique constraint
-- A join that requires `bjcp_code is not null`
-- Seeding `dim_style` from a BJCP-only source, leaving styles with no TTB base
-- Copying BJCP guideline prose — descriptions, commercial examples, judging notes — into the repository. Numeric vital statistics ranges are facts about beer; the prose is the copyrighted work
-- Deriving the facet vocabulary below by importing BJCP's own attribute tags wholesale
+Match against normalized text on **whole tokens and whole phrases, never substrings.** `ale` must not fire inside `pale`, and `gose` must not fire inside `mongoose`.
 
-The facet model is *informed by* BJCP's 2021 style-attribute approach. The vocabulary here is ours.
+### Rule 1 — The longest phrase matches first
+
+Candidate keywords are applied in order of token count (descending), then character length (descending), then `priority` (descending). A matched phrase **consumes** its tokens, and shorter keywords can only match tokens that are still unconsumed.
+
+So in "Hazy Pale Ale", `pale ale` matches and consumes both tokens, and `pale` alone never fires. Without consumption, "pale ale" would pick up every facet mapped to `pale` as well, and the two sets can disagree.
+
+### Rule 2 — Exclusions route products out of beer styles
+
+Rows with `match_type = exclude` cover **non-alcoholic**, **seltzer**, and **cider**. Their `attribute_group` is `exclude`, and their `attribute_code` is one of `non-alcoholic`, `seltzer`, or `cider`.
+
+- **Exclusions run before any facet matching.** One exclusion match routes the product out, whatever else matches. "Non-alcoholic IPA" is excluded, not classified as an IPA.
+- **An excluded product gets no style facets.** It records which exclusion routed it out, so the routing can be audited.
+- **`exclude` is a routing marker, not a facet group.** It never appears in `bridge_style_attribute` and isn't part of the controlled vocabulary. Adding a new exclusion reason is a reviewed change to this skill.
+
+### Rule 3 — Every product with zero matches is logged, and that log is the seed's to-do list
+
+A product that matches no keywords, and no exclusion, keeps its TTB class/type and nothing else. **Log every such product; never drop one silently.** Use a dbt model named per `dbt-conventions`, e.g. `int_beers_missing_style_keywords`.
+
+Each log row carries:
+- the product's natural key
+- the normalized text that was matched against
+- its TTB class/type
+- when it was first seen
+
+Working the log means one of three things for each row:
+1. **Add a keyword.** Use this when the text contains a style word the seed is missing.
+2. **Add an exclusion.** Use this when the product isn't beer.
+3. **Assign facets by hand.** Use this when the name carries no style word at all, e.g. Heady Topper. This is the cost ADR-0002 accepted.
+
+The log's row count is a coverage measure. Report it whenever the seed changes.
+
+### Fixtures
+
+Every change to the seed runs against fixtures with known-correct expected facets:
+- a longest-match case (`pale ale` vs `pale`)
+- a substring trap (`ale` inside `pale`)
+- one case per exclusion reason
+- a zero-match case that must appear in the log
+
+Ambiguous words such as `pale`, `wit`, `session`, and `imperial` each get a fixture showing the intended reading.
 
 ## The facet model
 
@@ -50,7 +97,7 @@ bridge_style_attribute (style_sk, attribute_group, attribute_code)
 
 ### Controlled vocabulary
 
-Only these values. Adding a **value** requires review; adding a **group** requires an ADR.
+The vocabulary is project-authored (ADR-0002). Only these values are allowed. Adding a **value** requires review; adding a **group** requires an ADR.
 
 | Group | Values |
 |---|---|
@@ -80,10 +127,9 @@ where a.attribute_group = 'region' and a.attribute_code = 'belgian';
 
 1. Assign the TTB class/type. Required. If none fits, stop and raise it — do not invent one
 2. Assign facets across every applicable group. A style with no `family` value is incomplete
-3. Add the BJCP code **only if** you have it from an already-registered source. Never guess a code, never derive one by similarity
-4. Populate vital statistics ranges (`og`, `fg`, `ibu`, `srm`, `abv` min/max) where known, `null` where not. Never interpolate a plausible range
-5. Run the detachability test
-6. Confirm at least one existing beer classifies to the style, or record why the style is being seeded empty
+3. Add the seed keywords that should route products to it, with fixtures
+4. Leave vital-statistics ranges (`og`, `fg`, `ibu`, `srm`, `abv` min/max) `null` unless they come from a registered, license-clean source. Never from BJCP, and never interpolated (ADR-0002)
+5. Confirm at least one existing beer classifies to the style, or record why the style is being seeded empty
 
 ## Style resolution from free text
 
@@ -94,3 +140,12 @@ When a user types "cheap IPA" or "belgian tripel," resolve to facets, not to a s
 3. Return a facet set, not a single style, unless the match is exact
 
 Price, availability, and brewer attributes are **not** style facets. If a term resolves to one of those, route it to that axis. A style facet describes the liquid.
+
+## Never
+
+- Any BJCP content in the repo or database: codes, style names, guideline prose, commercial examples, vital statistics, or attribute tags (ADR-0002)
+- Substring matching in the keyword map
+- A shorter keyword matching tokens already consumed by a longer one
+- An `exclude` row writing to `bridge_style_attribute`
+- A zero-match product dropped instead of logged
+- Keywords hardcoded outside the seed

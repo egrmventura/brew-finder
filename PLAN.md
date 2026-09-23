@@ -8,6 +8,12 @@ Design source of record. Research current as of September 2026; source status wa
 
 **BeerFinder tells you where, near you, you can probably buy a specific kind of beer right now.**
 
+**Scope** (ADR-0001, ADR-0003):
+- **Retail is New Jersey only.** Every outlet we rank is a New Jersey premises (ADR-0003).
+- **Beers and brewers are national.** A search for an out-of-state beer resolves to the right product and says honestly that it isn't distributed in New Jersey, instead of failing or matching the wrong beer (ADR-0003).
+- **Non-commercial.** The project has no revenue of any kind. It depends only on free sources that any self-hoster can use without an agreement of their own (ADR-0001).
+- **Open source.** The code is MIT-licensed and built to be self-hosted (ADR-0001).
+
 That's it. Not what a beer tastes like, not who rates it highly, not which brewery made it — where to drive to get it, and how confident we are that the trip is worth making.
 
 The gap this fills is narrow and real. Untappd and BeerAdvocate tell you what a beer *is*. Brewery finders tell you where breweries *are*. Store locators tell you where stores are. Nothing tells you which of those stores is likely to have the thing you actually want, because retail beer inventory is not published anywhere. Everyone in this space either avoids the question or quietly pretends to answer it.
@@ -22,16 +28,25 @@ Everything in the product serves that moment. A feature that doesn't help someon
 
 ## 0.3 What success looks like
 
-Falsifiable targets for the pilot market. If we can't hit these, the premise is wrong and we should know early.
+Falsifiable targets for New Jersey (ADR-0003). Where a row has no target, the measurement is a finding, not a pass/fail. If we can't hit the targets, the premise is wrong and we should know early.
 
-| Metric | Target | Why this one |
-|---|---|---|
-| Result density | ≥5 ranked outlets for a style query within a 10-mile radius | Below this the product isn't useful enough to open |
-| Precision at "Very likely" | ≥80% against held-out user confirmations | The top band is the promise; breaking it loses users permanently |
-| "Open now" accuracy | ≥95% | Sending someone to a closed store is the most infuriating possible failure |
-| Query latency, p95 | <2s from tap to rendered map | It's a decision made in a parking lot |
-| Feedback rate | ≥15% of results receive a confirm or deny | This is the flywheel; below this the model never improves |
-| Distribution footprint coverage | ≥90% of queried beers have a known state-level footprint | The dominant scoring term; gaps here produce confident nonsense |
+| Metric | Target |
+|---|---|
+| OSM coverage of NJ licensed off-premise retail | Measured, by county. No target — it's a finding |
+| Result density | ≥5 ranked outlets within 10 miles for three NJ test points: dense suburb, rural county, near a dry town |
+| Open-now accuracy | Measured against ~30 ground-truthed outlets. State sample size beside the number |
+| NJ footprint coverage | ≥80% of beers in dim_beer carry a distributed-in-NJ flag with a source |
+| Release extraction precision | ≥95% on 200 hand-labeled emails — deferred to Phase 2.5 |
+| p95 latency | <2s |
+| Cold-start setup | Stranger goes clone-to-running in under 30 minutes — deferred to Phase 4 |
+
+Where each row comes from:
+- OSM coverage and open-now accuracy: ADR-0004. Registry-to-OSM coverage and OSM `opening_hours` are what outlet quality now depends on.
+- Result density and NJ footprint coverage: ADR-0003.
+- Release extraction precision: ADR-0005.
+- Cold-start setup: ADR-0001, because the project ships for self-hosting.
+
+The former feedback-rate and "Very likely" precision metrics are dropped. Both were measured against user confirmations, and there is no user base; observations come only from manual logging and newsletters (ADR-0001).
 
 Precision matters more than recall throughout. Missing a store that had the beer is a mild disappointment. Sending someone to a store that didn't is the failure that ends the relationship.
 
@@ -46,13 +61,16 @@ Explicit, because each of these is a plausible-sounding direction that would dil
 - **Not a bar or taproom menu app.** Draft lists at bars are a live, well-served market. We are about buying beer to take home. Taprooms appear as outlets where they sell packaged product to go.
 - **Not real-time inventory, ever, in any surface.** We don't have it. Displaying a count or a boolean would be a lie regardless of how the number was derived.
 - **Not international at launch.** US only. The data sources, the three-tier system, and the licensing structure are all US-specific and don't generalize cheaply.
-- **Not multi-market at launch.** One metro, proven, before the second.
+- **Not national retail at this stage.** Outlets are New Jersey only; beers and brewers are national, stores are not. A second state would be a deliberate extension through the seams in §0.5, not scope creep (ADR-0003).
+- **Not a commercial product.** No revenue of any kind: no ads, affiliate or referral links, paid tiers, or sponsored placement. Partner-gated and paid data sources are out permanently (ADR-0001). This is separate from the commerce boundary above. That one keeps us out of transactions; this one keeps us out of revenue.
 
-## 0.5 Pilot market: North and Central New Jersey
+## 0.5 Retail scope: New Jersey
+
+New Jersey, statewide, is the settled retail scope. It is not a pilot and not a proving ground for a second metro. `dim_outlet` holds only New Jersey premises; beers and brewers remain national (ADR-0003).
 
 Chosen deliberately, not by convenience, though the convenience is real — ground-truthing a scoring model means walking into stores and checking shelves, and that only happens if the stores are nearby.
 
-New Jersey has a structural property that makes it an unusually clean first market. Corporate entities are limited to two retail distribution licenses, and municipalities may issue only one plenary retail distribution ("Class 44") license per 7,500 residents. The practical effect is that chain supermarkets and convenience stores almost entirely don't sell beer — a handful of exceptions exist where a chain holds its two licenses — and off-premise beer retail is concentrated in independent liquor stores.
+New Jersey has a structural property that makes it an unusually clean market. Corporate entities are limited to two retail distribution licenses, and municipalities may issue only one plenary retail distribution ("Class 44") license per 7,500 residents. The practical effect is that chain supermarkets and convenience stores almost entirely don't sell beer — a handful of exceptions exist where a chain holds its two licenses — and off-premise beer retail is concentrated in independent liquor stores.
 
 Why that helps: the `outlet_archetype_affinity` term in the scoring function is trying to distinguish "dedicated bottle shop" from "gas station" from "supermarket." In most states that's a messy continuum. In New Jersey the license structure has already sorted the outlets for us, and the archetype signal arrives much cleaner than it would in, say, Pennsylvania or California.
 
@@ -63,7 +81,15 @@ Two complications to plan around:
 
 One upside worth capturing: the NJ ABC publishes licensee data. A public registry of exactly who may legally sell beer, by municipality, is a Tier 1 source for `dim_outlet` that most states don't offer as cleanly. Register it in `docs/data-sources.md` during Phase 1 and verify its currency before depending on it.
 
-Success in this market is the gate for market two. Don't generalize the outlet archetype weights out of New Jersey without re-fitting — the license structure that makes them clean here is exactly what makes them non-transferable.
+### What must stay pluggable
+
+The scope is settled, but code must not assume New Jersey is the only possible state (ADR-0003):
+
+- **The distribution footprint lookup.** `distribution_footprint(brand, state_code)` keeps its state argument. Today it stores one New Jersey flag per brand with three values: distributed, not distributed, or unknown (`null`, never defaulted to "not"). It raises an error for any other state. A second state replaces the storage behind the function with a brand × state bridge, and callers don't change. No scoring or serving code reads the flag directly.
+- **`dim_outlet.state_code`.** It stays a column even though every row is `NJ`, because it is what feeds the footprint seam.
+- **Outlet sourcing.** Each state has its own outlet sourcing. New Jersey's is the NJ ABC licensee registry as the spine, with OpenStreetMap as enrichment and cross-check (ADR-0004). ABC license-class filtering belongs to that New Jersey source, not to shared code.
+
+Don't generalize the outlet archetype weights out of New Jersey without re-fitting — the license structure that makes them clean here is exactly what makes them non-transferable.
 
 ## 0.6 How to use this document
 
@@ -88,8 +114,8 @@ When this document and `CLAUDE.md` disagree, `CLAUDE.md` wins for behavior and t
 
 Unresolved as of the current revision. Each needs an owner and a date before Phase 3.
 
-1. **BJCP commercial licensing.** Permission has not been requested. Until it's granted, the BJCP overlay stays detachable and the TTB class/type layer carries the load. Request early; a late "no" is expensive.
-2. **BeerMenus: partnership or nothing.** Their data is the best availability proxy available. Scraping it is a terms-of-service exposure we'd rather not carry. Approach them before building anything that depends on it.
+1. **BJCP commercial licensing.** **Closed — ADR-0002.** BJCP content is not used, so no permission is requested.
+2. **BeerMenus: partnership or nothing.** **Closed — ADR-0001.** Nothing: BeerMenus is out permanently, both scraping and partnership.
 3. **Google Places cost at scale.** Fine for one metro. Model the cost curve before market two, and evaluate OpenStreetMap coverage in the pilot area as a partial substitute.
 4. **Distribution footprint acquisition.** Brewer beer-finder pages are public but wildly inconsistent in format. Unknown whether this is a tractable scraping problem or needs per-brewer manual entry for the top N brands. Spike this in Phase 2 — it determines whether the dominant scoring term is cheap or expensive.
 5. **Feedback rate.** The 15% target is an assumption, not an observation. If real users confirm at 3%, the flywheel doesn't spin and the model stays heuristic indefinitely. Instrument for this from the first beta.
@@ -117,17 +143,20 @@ Goose Island 312 is the case that proves it. By the Brewers Association definiti
 
 These are the existing, published schemes you can adopt rather than invent. Each has a different purpose, granularity, and — critically — a different license.
 
-### 2.1 BJCP Style Guidelines (2021 beer edition)
+### 2.1 Our approach: TTB class/type plus a keyword-to-facet map
 
-The most rigorous hierarchical taxonomy in existence. 34 numbered categories, roughly 100+ styles, each with an alphanumeric code (`21A` American IPA, `1D` American Wheat Beer). Every style carries quantified vital statistics — OG/FG, IBU, SRM, ABV ranges — which makes it genuinely machine-usable rather than just descriptive.
+Styles are classified in two layers, and no BJCP content is used at all: no text, codes, vital statistics, or attribute tags (ADR-0002).
 
-The 2021 edition also added a **style attribute facet system**: tags like `craft-style`, `north-america`, `pale-color`, `standard-strength`, `wheat-beer-family`, `any-fermentation`. This is exactly the multi-axis grouping the brief asks for, already designed by people who thought hard about it. Adopt the facet model even if you don't adopt BJCP's content.
+1. **TTB class/type (§2.4) is the required base.** It's federal, carries no license restriction, and every style has one.
+2. **A manually maintained keyword-to-facet map is versioned in the repo.** It matches tokens in beer names, COLA fanciful names, and TTB class/type text (e.g. "IPA", "pilsner", "saison", "gose") to facet codes in `bridge_style_attribute`. The facet vocabulary (color, strength, fermentation, family, region, character) is project-authored. Adding a keyword is a reviewed change; adding a facet group requires an ADR.
 
-- Official: `bjcp.org/bjcp-style-guidelines/` (PDF, DOCX), 2021 is still current
-- Parsed JSON/XML/YAML: `github.com/bjcp-brasil/styleguide-2021`, `github.com/bgaze/bjcp-guidelines`
-- Legacy XML + DTD + XSD: `legacy.bjcp.org/styles04/xml/`
+Why not BJCP: its content is licensed for non-commercial use only. This repo is MIT-licensed, which grants everyone commercial use, so BJCP-derived files committed here would be offered under terms we can't grant (ADR-0002).
 
-**⚠ Licensing blocker.** BJCP content is copyrighted and explicitly not licensed for commercial use without written permission. Every parsed repo above carries the same restriction. If this app ever monetizes, you need either BJCP permission or a clean-room style taxonomy. Plan for this now — request permission early, and structure `dim_style` so BJCP codes live in a swappable crosswalk table rather than being the primary key.
+What it costs (ADR-0002):
+- **Classification is only as good as the name.** A beer with no style word in its name gets its TTB class alone unless someone assigns facets by hand.
+- **No per-style vital-statistics ranges.**
+- **Granularity is family- and region-level**, not 100+ styles.
+- **Ambiguous words need negative rules and fixtures.** "Pale", "wit", "session", and "imperial" each mean different things in different names.
 
 ### 2.2 Brewers Association Beer Style Guidelines
 
@@ -281,8 +310,8 @@ Populate from scraped shelf tags, menu text, user search misses. `normalized_tex
 style_sk, style_code, style_name, parent_style_sk,
 og/fg/ibu/srm/abv min-max,
 ttb_class_type          ← the license-safe layer
-bjcp_code               ← swappable overlay, nullable
 ```
+No BJCP code column, and no BJCP crosswalk anywhere (ADR-0002).
 
 **`bridge_style_attribute`** — many-to-many facets (BJCP-style attributes plus your own)
 ```
@@ -324,10 +353,13 @@ source_system      (odb | google_places | osm | manual)
 **`fact_availability_observation`** — grain: one sighting
 ```
 observation_sk, beer_sk, outlet_sk, observed_date_sk,
-source_type        (scrape | user_report | partner_feed | menu)
+source_type        (manual | newsletter | osm | licensee)
 observed_status    (in_stock | out_of_stock | discontinued)
 price_cents, package_format, confidence_weight
 ```
+`source_type`:
+- **Current set:** `manual` (ADR-0001), `newsletter` (ADR-0005), and `osm` and `licensee` (ADR-0004).
+- **Removed:** `scrape` and `partner_feed`. No permitted source produces them (ADR-0001).
 
 **`fact_availability_score`** — grain: beer × outlet × day; the model output, the thing the app actually queries
 ```
@@ -364,25 +396,40 @@ The system splits cleanly into a batch enrichment pipeline and a low-latency geo
 ## 7. Phased build
 
 ### Phase 0 — Repo and taxonomy seed (week 1)
-Monorepo scaffold, CI, Postgres+PostGIS provisioned. Load BJCP parsed JSON and TTB class/type into `dim_style` + `bridge_style_attribute`. Deliverable: a queryable style taxonomy with working facet search. Nothing user-facing — this is the vocabulary everything else speaks.
+Monorepo scaffold, CI, Postgres+PostGIS provisioned. Load TTB class/type into `dim_style`, and seed the keyword-to-facet map that populates `bridge_style_attribute` (ADR-0002). No BJCP data is loaded. Deliverable: a queryable style taxonomy with working facet search. Nothing user-facing — this is the vocabulary everything else speaks.
 
 ### Phase 1 — Geo and outlets (weeks 2–3)
-Ingest Open Brewery DB in full. Layer Google Places for non-brewery retail in one pilot metro. Build `dim_outlet` + hours. Deliverable: "show me every place selling beer within 5 miles that's open now." **This alone is a usable product** and it depends on zero uncertain data. Ship it.
+New Jersey statewide (ADR-0003). Google Places is not used at any step (ADR-0004).
+
+- **Register first.** Put the NJ ABC licensee registry and OpenStreetMap in `docs/data-sources.md`, with terms read and `last_verified` recorded, before any fetcher is written (ADR-0004).
+- **Registry spine.** Load the registry filtered to licenses that permit off-premise sale of packaged beer, and make it the spine of `dim_outlet`. Encode license class codes only from current ABC documentation.
+- **OSM matching.** Match the registry against a New Jersey OSM extract for coordinates, `opening_hours`, and shop type, and flag mismatches in both directions for review. Matching fixtures come before matching code. This produces the OSM-coverage-by-county finding in §0.3.
+- **Unmatched outlets.** An outlet with no OSM match has no location until a geocoder is registered on its storage terms (ADR-0004).
+- **Open Brewery DB.** Ingest it in full as brewer candidates for Phase 2. Only New Jersey premises become outlets (ADR-0003).
+
+Deliverable: "show me every licensed place selling packaged beer within 5 miles that's open now." Outlets without sourced hours are excluded from "open now" rather than guessed (ADR-0004). **This alone is a usable product.** Ship it.
 
 ### Phase 2 — Beer and brewer dimensions (weeks 4–6)
 Parse the TTB COLA registry into `dim_beer`. Build the alias table and fuzzy resolver. Populate `dim_brewer` with BA segments, independence flags, and SCD2 ownership history for the top ~200 brewers by volume. Deliverable: search a beer by approximate name, get a canonical product with a correct classification on all four axes.
 
+### Phase 2.5 — Release dataset (duration not yet estimated)
+Stand up the separate public dataset repository (ADR-0005). A scheduled GitHub Actions workflow reads the maintainer-operated inbox and extracts release facts: brewery, beer, announced date, package, and any outlets the newsletter names. It validates the facts and commits them as versioned files. Only extracted facts are published, each referencing its source newsletter; newsletter prose and images are never republished. Extraction fixtures with known-correct outputs come before extraction code. Once the dataset's name, URL, schema, and license exist, register it in `docs/data-sources.md` as Tier 1. Deliverable: the app ingests release facts from the dataset's public files, and a source freshness test catches staleness. It comes after Phase 2 because extraction resolves names against `dim_beer` and its aliases, and before Phase 3 because newsletters are one of only two observation sources (ADR-0001).
+
+The week ranges on Phases 3 and 4 predate this phase and have not been re-estimated.
+
 ### Phase 3 — Availability signals (weeks 7–10)
-Build distribution footprint from brewer beer-finder pages — this is the highest-value scraping target and mostly the brewers' own public maps. Implement the scoring function with hand-tuned weights. Backfill observations from whatever Tier 3 sources you've decided you're comfortable with. Deliverable: `fact_availability_score` populated for the pilot metro.
+- **NJ footprint.** Build the New Jersey distribution flag per brand: distributed, not distributed, or unknown, with a source and a verification date. It sits behind `distribution_footprint(brand, state_code)` (ADR-0003). Brewer beer-finder pages are the main input. Each one is registered before any fetcher, and scraping one is Tier 3, which needs an accepted ADR first.
+- **Scoring.** Implement the scoring function with hand-tuned weights, tests first. `brand_velocity` (w₆) has no permitted source and stays at zero weight (ADR-0001).
+- **Observations.** Load observations from manual logging and from the newsletter dataset built in Phase 2.5 (ADR-0001, ADR-0005). No other observation source exists.
+
+Deliverable: `fact_availability_score` populated for New Jersey statewide (ADR-0003).
 
 ### Phase 4 — Web app (weeks 11–14)
-Map + filter panel across the four axes. Confidence bands, never counts. Outlet detail with hours and "last seen" dates. Deliverable: public beta, one metro.
+Map + filter panel across the four axes. Confidence bands, never counts. Outlet detail with hours and "last seen" dates, "hours unknown" where no hours are sourced, and visible "© OpenStreetMap contributors" attribution wherever OSM-derived data appears (ADR-0004). Deliverable: the web app covering New Jersey statewide (ADR-0003), plus a documented self-host setup path. A stranger must get from clone to running in under 30 minutes, which is the cold-start metric in §0.3 (ADR-0001).
 
-### Phase 5 — Feedback loop (weeks 15–16)
-User confirm/deny on every result. This is the flywheel — it converts users into your inventory feed and is the only path to data no competitor has. Build it before mobile.
-
-### Phase 6 — Mobile (weeks 17–22)
-Expo build, native location permissions, App Store and Play Store review. Budget real time for alcohol-related app review policies on both stores; they are stricter than general apps and both require verified age gating.
+### Cut phases
+- **Former Phase 5 (feedback loop) is cut.** Availability observations come only from manual logging and brewery newsletters, so user confirm/deny is not an observation source (ADR-0001).
+- **Former Phase 6 (mobile) is cut.** No ADR records this decision yet.
 
 ---
 
@@ -477,6 +524,6 @@ The scoring function and the identity resolver are the two places where generate
 
 ## 10. First three concrete actions
 
-1. `git init`, scaffold the monorepo, provision Postgres+PostGIS, write `CLAUDE.md` with the four-axis rule and the scored-availability rule as hard constraints.
-2. Pull the full Open Brewery DB dump and the BJCP parsed JSON. Load both. Confirm you can answer "breweries within 10km of a point, filtered by style facet" before building anything else — it validates the geo index and the facet bridge in one query.
-3. Write the COLA registry parser against a single brewer's label history (pick one with a small, clean catalog) to calibrate the identity resolution problem at small scale before you take on 400,000 products.
+1. **Register the NJ ABC licensee registry and OpenStreetMap in `docs/data-sources.md`.** Read their actual terms. For the registry, confirm the export format, the update cadence, and whether it separates consumption licenses from distribution licenses. No outlet fetcher can be written before this, so everything in Phase 1 waits on it (ADR-0004).
+2. **Load TTB class/type with the keyword-to-facet seed, plus the registry and a New Jersey OSM extract.** Before building anything else, confirm you can answer two queries: "licensed NJ outlets within 10 km of a point" and "styles matching a facet". Together they validate the geo index and the facet bridge (ADR-0002, ADR-0003, ADR-0004).
+3. **Write the COLA registry parser against one brewer's label history, then run the keyword map over those labels.** Pick a brewer with a small, clean catalog. This calibrates identity resolution at small scale before you take on 400,000 products. It also gives an early measure of how many labels get a facet beyond their TTB class, which is the main cost ADR-0002 accepted.

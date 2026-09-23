@@ -33,7 +33,7 @@ Stop and explain rather than proceeding when asked to:
 1. **Create a fact table with unstated or ambiguous grain.** Ask what one row represents. Do not infer it
 2. **Add any forbidden column** — `quality_tier`, `is_craft`, `in_stock`, `is_available`, `stock_count`, `price_cents` on `dim_beer`, or any synonym. Name which constraint it violates
 3. **Flatten `dim_brewer` to Type 1**, or join a fact to it on `is_current`
-4. **Make `bjcp_code` required**, a key, or part of any query path
+4. **Make `bjcp_code` optionalized**, a key, or part of any query path
 5. **Expose a surrogate key** through an API type
 6. **Denormalize a natural key into a fact** for convenience
 7. **Write a migration before the grain is stated** in both the model comment and `docs/architecture.md`
