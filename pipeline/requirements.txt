@@ -1,0 +1,5 @@
+# dbt-core with the Postgres adapter (ADR-0006). Pinned 2026-09-29 to the latest
+# PyPI releases: dbt-core 1.12.5 (2026-09-15), dbt-postgres 1.11.0 (2026-07-16).
+# Install into pipeline/.venv; scripts/dbt.mjs runs dbt from there.
+dbt-core==1.12.5
+dbt-postgres==1.11.0

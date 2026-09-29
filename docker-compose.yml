@@ -1,0 +1,39 @@
+# Local Postgres 18 + PostGIS + pg_trgm for development (WP1).
+#
+# Image: the official postgis/postgis image. It is published for linux/amd64 only,
+# so on Apple Silicon it runs under emulation; the platform line makes that explicit.
+# The native imresamu/postgis image was rejected on 2026-09-29: its newest
+# Postgres 18 tag carries PostGIS 3.6.1, and 3.6.3 fixes a KNN failure (#6026)
+# on the `<->` ordering the radius search depends on (geo-query-patterns skill).
+# The 18-3.6 tag moves, so `pnpm db:migrate` refuses PostGIS older than 3.6.3.
+#
+# Scripts in db/init/ run once, on an empty data volume. The image's own
+# 10_postgis.sh creates PostGIS; 20_pg_trgm.sql adds pg_trgm after it.
+# `pnpm db:migrate` also creates both extensions, for hosts that skip Docker.
+
+services:
+  db:
+    image: postgis/postgis:18-3.6
+    platform: linux/amd64
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?set POSTGRES_USER in .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: ${POSTGRES_DB:?set POSTGRES_DB in .env}
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      # Postgres 18 images keep data under /var/lib/postgresql/18/docker and
+      # declare the volume at /var/lib/postgresql, not /var/lib/postgresql/data.
+      - pgdata:/var/lib/postgresql
+      - ./db/init/20_pg_trgm.sql:/docker-entrypoint-initdb.d/20_pg_trgm.sql:ro
+    healthcheck:
+      # Over TCP, not the socket: during first start the image runs the init scripts
+      # on a temporary socket-only server, which pg_isready would report as ready.
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+
+volumes:
+  pgdata:

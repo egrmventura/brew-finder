@@ -42,6 +42,9 @@ coverage
 pipeline/dbt/target/
 pipeline/dbt/logs/
 dbt_packages/
+pipeline/.venv/
+# dbt's per-machine anonymous-usage ID, written to --profiles-dir
+pipeline/dbt/.user.yml
 
 # DuckDB
 *.duckdb

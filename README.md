@@ -55,7 +55,8 @@ Inside `docs/`:
 
 - Node.js 22.13+
 - pnpm 12+
-- PostgreSQL 18 with the PostGIS and `pg_trgm` extensions
+- PostgreSQL 18 with the PostGIS and `pg_trgm` extensions — or Docker, which runs it for you (`pnpm db:up`)
+- Python 3.10+, for dbt-core (ADR-0006)
 
 No API keys or paid accounts are needed. Every source is free, and Google Places is not used ([ADR-0001](./docs/adr/0001-non-commercial-free-sources-only.md), [ADR-0004](./docs/adr/0004-outlet-sourcing-abc-registry-and-osm.md)).
 
@@ -63,11 +64,18 @@ No API keys or paid accounts are needed. Every source is free, and Google Places
 
 ```bash
 pnpm install
-cp .env.example .env          # then fill in DATABASE_URL
-pnpm db:migrate
-pnpm db:seed                  # loads the style taxonomy and Open Brewery DB extract
+cp .env.example .env          # local defaults match docker-compose.yml
+pnpm db:up                    # Postgres 18 + PostGIS + pg_trgm in Docker; skip if you run your own
+pnpm db:migrate               # extensions and the read-only role
+python3 -m venv pipeline/.venv
+pipeline/.venv/bin/pip install -r pipeline/requirements.txt
+pnpm db:seed                  # not implemented yet — will load the style taxonomy and Open Brewery DB extract
 pnpm dev
 ```
+
+The Docker image, `postgis/postgis:18-3.6`, is published for `linux/amd64` only, so on Apple Silicon it runs under emulation.
+
+`pnpm dbt:run` and `pnpm dbt:test` always use the dbt in `pipeline/.venv`, never the `dbt` on your `PATH`. If the dbt Cloud CLI is installed, `dbt` on `PATH` resolves to it, and it needs a dbt Cloud account (ADR-0006).
 
 ### Common commands
 
@@ -77,8 +85,10 @@ pnpm dev            # web app, local
 pnpm test           # all packages — fails until a package has tests
 pnpm typecheck      # fails until a package has TypeScript source
 pnpm lint           # fails until a package has TypeScript source
-pnpm dbt:run        # build the enrichment pipeline
-pnpm dbt:test       # includes source freshness checks
+pnpm db:up          # start local Postgres in Docker
+pnpm db:migrate     # apply db/migrations/
+pnpm dbt:run        # build the enrichment pipeline — fails until a model exists
+pnpm dbt:test       # dbt tests — fails until a model exists
 ```
 
 ## Repository layout
@@ -94,6 +104,10 @@ pipeline/
   dbt/              Staging → intermediate → marts
   ingest/           Source fetchers, one module per registered source
   tests/            Pipeline tests and scoring fixtures
+db/
+  init/             Docker first-start scripts (pg_trgm)
+  migrations/       SQL applied in order by pnpm db:migrate
+scripts/            Repo tooling: migration runner, dbt wrapper, check guards
 docs/               See documentation map above
 .claude/
   agents/           Subagent definitions, each pinned to a model

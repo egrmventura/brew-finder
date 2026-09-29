@@ -1,0 +1,32 @@
+# dbt-core against the local Postgres directly; no DuckDB (ADR-0006).
+# Run through `pnpm dbt:run` / `pnpm dbt:test`, never a bare `dbt`: see scripts/dbt.mjs.
+# Layering, naming, and required tests: the dbt-conventions skill.
+name: beerfinder
+config-version: 2
+profile: beerfinder
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+target-path: target
+clean-targets: [target, dbt_packages]
+
+models:
+  beerfinder:
+    +grants:
+      select: ["beerfinder_readonly"]
+    staging:
+      +schema: staging
+      +materialized: view
+    intermediate:
+      +schema: intermediate
+      +materialized: ephemeral
+    marts:
+      +schema: marts
+      +materialized: table
+
+on-run-end:
+  # +grants covers tables and views; the read-only role also needs USAGE on the
+  # schemas dbt creates. Created by db/migrations/0001.
+  - "{% for s in schemas %}grant usage on schema {{ s }} to beerfinder_readonly;{% endfor %}"
