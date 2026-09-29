@@ -14,7 +14,7 @@ Violating any of these is wrong by construction, not a style nit. Reject them in
 
 4. **Source tiering is enforced before code, not after.** Tier 1 sources may be depended on freely. Tier 2/3 sources require an entry in `docs/data-sources.md` with a `last_verified` date *before* any fetcher or scraper calls them, because an undocumented source is an unvetted legal and reliability liability. Tier 4 is dead — BreweryDB, Punk API, Drizly, openbeerdb — named here so nobody rediscovers them.
 
-5. **BJCP content is license-restricted.** Non-commercial use only, absent written permission we don't currently have. BJCP codes live in a nullable, swappable crosswalk column on `dim_style` — never as a primary key, never as a required join — so the taxonomy still works if permission is denied.
+5. **BJCP content is not used.** Styles come from TTB class/type (27 CFR Part 7) plus the project's keyword-to-facet map. No BJCP text, codes, or vital statistics enter this repo — not as data, fixtures, columns, or crosswalks. The repo is MIT-licensed, and BJCP's non-commercial terms can't be passed on under MIT (ADR-0002).
 
 6. **No commerce.** No cart, checkout, delivery, or reservation, in any surface. Remaining an information service is what keeps us outside three-tier licensing entirely; facilitating a transaction inherits those obligations in every state we operate in. Full non-goal list: `PLAN.md` §0.4.
 
@@ -32,6 +32,8 @@ Work in `packages/scoring` and on identity resolution does not begin until the `
 
 Tests come before implementation in `packages/scoring` and in any identity-resolution code. These are the two places where generated code looks correct and is subtly wrong — a fuzzy matcher that silently collapses two distinct beers, or a weighting that emits confident scores from near-zero evidence. Write fixtures with known-correct expected values first, every time. Elsewhere, normal review suffices.
 
+The same tests-before-implementation rule applies to extraction code in the release pipeline, the scheduled job in the public dataset repo that turns newsletters into release facts. Extraction resolves beer and outlet names from free text, and a mis-parse is published to every deployment (ADR-0005).
+
 ## Review
 
 Review runs in two passes and neither substitutes for the other: `/code-review` for correctness, then `constraint-audit` for project constraints. A diff can be entirely bug-free and still flatten `dim_brewer` to Type 1; it can be constraint-clean and still have an off-by-one. Run both, report them separately. A change is not ready to merge until both have run.
@@ -47,25 +49,29 @@ Report checklist items individually with their evidence. "All checks passed" is 
 ## Stack
 
 - Node 22.13+, pnpm 12+, TypeScript strict
-- Next.js 16 App Router (`apps/web`), Expo / React Native (`apps/mobile`)
+- Next.js 16 App Router (`apps/web`)
 - PostgreSQL 18 + PostGIS + `pg_trgm` (serving layer)
-- dbt over DuckDB locally, materializing to Postgres (enrichment pipeline)
+- dbt-core with the Postgres adapter, targeting that same Postgres directly — no DuckDB (enrichment pipeline, ADR-0006)
 - MapLibre GL for maps (not Mapbox — avoids per-load billing surprises)
 - GitHub Actions on cron for orchestration
 
 ## Commands
 
-```
-pnpm test        pnpm typecheck    pnpm lint
+```text
+pnpm lint:docs   pnpm test         pnpm typecheck    pnpm lint
 pnpm dev         pnpm db:migrate   pnpm db:seed
 pnpm dbt:run     pnpm dbt:test
 ```
 
-Run `pnpm typecheck && pnpm lint && pnpm test` before declaring any work complete.
+**The required check, until WP1 creates TypeScript packages, is `pnpm lint:docs`.** Run it before declaring any work complete. It runs markdownlint over `*.md` and `docs/**`, configured in `.markdownlint-cli2.jsonc`.
+
+`pnpm typecheck`, `pnpm lint`, and `pnpm test` join the required check as soon as they have something to check. `typecheck` and `lint` join when the first package has TypeScript source, and `test` joins when the first test exists. From then on the check is `pnpm lint:docs && pnpm typecheck && pnpm lint && pnpm test`. Until then those three fail with no script to run. That failure is honest: never add a script that passes on nothing just to turn them green.
 
 ## Model policy
 
-Ceiling is Opus 5. The `fable` and `best` aliases are prohibited — `best` resolves to a Fable model where available, silently exceeding the ceiling. No agent, command, or skill may name a model above `opus`.
+The ceiling is the Opus tier: whatever the `opus` alias resolves to. The `fable` and `best` aliases are prohibited — `best` resolves to a Fable model where available, silently exceeding the ceiling. No agent, command, or skill may name a model above `opus`.
+
+The ceiling is stated as a tier, not a version, because the allowlist in `.claude/settings.json` is written in aliases and `opus` moves with releases. It resolved to Opus 5.5 on 2026-09-23, which a fixed "Opus 5" contradicted.
 
 ## More detail
 
