@@ -1,0 +1,160 @@
+# docs/research — CSV rules
+
+Interim research format for brewery/newsletter-target tracking, pending the real
+`dim_`/`bridge_` models in `pipeline/dbt/models/marts/` (data-modeler's domain, once
+`entity-resolution` exists per CLAUDE.md's gate). These rules apply to every
+`.csv` in this directory and every future change or addition to them.
+
+## Shape
+
+Four files, decomposed by grain (see `dimensional-grain` skill for why a flat
+"one row per destination" table collapses distinct grains):
+
+- `dim_brewer.csv` — one row per brewer identity **version**. SCD2: a rename
+  produces a new `brewer_sk` under the same `brewer_natural_key`; a pure
+  relocation does not (the brewer's own attributes didn't change).
+- `dim_location.csv` — one row per physical premises the brewer research has
+  identified. Grain note: with no street-address or OSM-id data available yet,
+  `location_natural_key` is scoped to `<brewer_natural_key>__<city-slug>`, not a
+  true premises identity — see **Known limitation** below.
+- `bridge_brewer_location.csv` — one row per continuous occupancy interval:
+  `brewer_sk` × `location_sk` × `[effective_from, effective_to)`. No-overlap is
+  the correctness rule here, not no-gaps — a closed-then-reopened site has a
+  legitimate gap.
+- `fact_newsletter_target.csv` — one row per currently-tracked brewer
+  (`brewer_sk`), brand-level per the diagnosis that a mailing list is a brand
+  relationship, not a location one. Only brewers sourced from an active
+  newsletter-target row get a fact row; a brewer known only from a historical
+  closure record has no `added_date` evidence and gets none.
+
+## Where each source field went
+
+Every column of `newsletter-targets.csv` and `expired-targets.csv` is carried
+into the four tables:
+
+| Source field | Destination |
+| --- | --- |
+| `name` | `dim_brewer.brewer_name` (brand stem for multi-location brewers) |
+| `website` | `dim_brewer.website`, per version, so a rename keeps its old site. Differing per-location URLs are listed in `dim_brewer.source_note` |
+| `city`, `county`, `state`, `postal_code`, `county_alternates`, `county_note` | `dim_location` |
+| `cohort` | `dim_location.cohort` per location; `fact_newsletter_target.cohort` per brand (`nj` if any location is `nj`) |
+| `date_added` | `dim_location.added_date` per location; `fact_newsletter_target.added_date` is the brand's earliest |
+| `brewery_type` | `bridge_brewer_location.brewery_type`. It describes the establishment at a site (e.g. `brewpub`), so it sits at occupancy grain, not on the brewer |
+| `research_note` | `source_note` on the location and bridge rows it concerns |
+| `reason` | `bridge_brewer_location.occupancy_reason` |
+| `closure_date`, `closure_date_reference`, `closure_date_basis` | `effective_to`, `effective_to_reference`, `effective_to_basis` on `dim_brewer` and `bridge_brewer_location` |
+| `superseded_by` | Structure where a rename or relocation links rows; the text also stays in `source_note` |
+| `source` | `bridge_brewer_location.source` (blank for rows from `newsletter-targets.csv`, which has no source column; their provenance is in `research_note`) |
+| `revision` | Not carried. It flagged which flat-file row superseded another; the bridge's rename and relocation rows now express that directly |
+
+Neither source file has an email or newsletter signup address. No such
+column exists here, and none may be added with guessed values.
+
+## The 5 rules
+
+1. **`brewer_sk` has a minimum of 8 digits on the end**, to allow for
+   expansion. Format: `bwr_` + zero-padded 8-digit sequence, e.g. `bwr_00000001`.
+2. **`location_sk` has a minimum of 8 digits on the end**, same reason and
+   format: `loc_` + zero-padded 8-digit sequence, e.g. `loc_00000001`.
+3. **Quote every field that contains any character outside
+   `[A-Za-z0-9-]`.** A bare postal code (`08205-9563`) or a bare date
+   (`2026-09-01`) stays unquoted; anything with a space, punctuation, or an
+   underscore — including header names like `brewer_sk` — gets wrapped in
+   double quotes, with embedded `"` doubled per RFC 4180. **Exception for
+   key values:** values in `brewer_sk`, `location_sk`, `brewer_natural_key`,
+   and `location_natural_key` stay unquoted when they contain only letters,
+   digits, hyphens, and underscores (e.g. `bwr_00000001`,
+   `cross_keys_brewing_co__williamstown`). Their header names are still
+   quoted under the general rule.
+4. **All dates are `yyyy-mm-dd`.** Where the source only supports year or
+   year-month precision, the usable date column is padded (`2019` →
+   `2019-01-01`, `2025-09` → `2025-09-01`) and the original raw value is kept
+   in a separate, clearly-named reference field — never silently discarded.
+   `9999-12-31` is the open-ended `effective_to` sentinel for a
+   currently-active interval, matching the `dimensional-grain` skill's SCD2
+   convention; `effective_to` uses the literal string `unknown` when no end
+   date evidence exists.
+   **`effective_from` is never `unknown`** in `dim_brewer` or
+   `bridge_brewer_location`. Each date carries a `_reference` column (the
+   raw value at its original precision, blank when none exists) and a
+   `_basis` column (where the value came from), for both `effective_from`
+   and `effective_to`.
+   Resolution order:
+   1. A researched opening date (for a reopened or relocated site, the
+      start of the *current continuous* occupancy), padded per above.
+   2. Otherwise, if `effective_to` is a real end date: one month before it,
+      with `effective_from_basis` beginning `ESTIMATE:`.
+   3. Otherwise: `2026-09-01`, with `effective_from_basis` beginning
+      `PLACEHOLDER:`.
+
+   `dim_brewer.effective_from` is the earliest `effective_from` across that
+   brewer version's bridge rows. `ESTIMATE:` and `PLACEHOLDER:` values are
+   not evidence and must be replaced when a real date is found; the basis
+   says whether the date was searched for and not found, or never searched.
+5. **`source_note` is capped at 320 characters.** The current data's longest
+   note is 188 characters; 320 gives headroom without inviting essay-length
+   notes. A note that would exceed the cap must be shortened by whoever is
+   editing it — tooling must never silently truncate, since that destroys
+   information rather than just reformatting it.
+
+## Identity-matching rules (how rows became brewer/location/bridge rows)
+
+These are mechanical, evidence-based rules — not fuzzy matching, and not a
+substitute for the `entity-resolution` skill once it exists. Nothing here
+merges or splits an entity without a documented signal already present in the
+source data.
+
+- **Same `brewer_natural_key` across a rename or relocation** only when the
+  source's own `reason` column says `relocated` or `renamed` *and* a
+  `superseded_by` / `research_note` pair links a specific historical row to a
+  specific current row. A `reason` of `closed` — even with a "successor" or
+  "rebranded by the owner's son" note — creates a **separate**
+  `brewer_natural_key` for the new occupant; the source already draws that
+  distinction (e.g. Devil's Creek Brewery → Raccoon Taproom, and Bucket
+  Brigade Brewery → Obscura Brewing Co. are both `closed`, not `renamed`, and
+  are kept separate here).
+- **One brewer, multiple simultaneous locations** only when two or more
+  *current* rows share both (a) the same normalized website domain and (b) a
+  common name stem split on `" - "` or `" of "` (e.g. `Tonewood Brewing` /
+  `Tonewood Brewing - Barrington`; `Triumph Brewing Co of Princeton` /
+  `...of New Hope`). A shared domain alone is not enough — e.g. `Swedesboro
+  Brewing Company`, `Raccoon Pubhaus (formerly Third State)`, and `The Raccoon
+  Taproom (Swedesboro Brewing)` share a domain but no name-stem, and a
+  different-domain case (`Triumph Brewing Company`, Red Bank) is kept apart
+  from the two `triumphbrew.com` locations despite the similar name. These
+  ambiguous cases are left unmerged and open — see below.
+- **`duplicate_record`** rows are dropped entirely, not modeled as a
+  brewer/location/bridge row (e.g. the Cape May Brewing Company Cape May
+  entry, which the source already says is the same single Rio Grande
+  premises).
+- **`moved_out_of_state`** rows get a historical (closed) `dim_brewer` row but
+  no current location and no `fact_newsletter_target` row.
+
+## Known limitations (flagged, not resolved)
+
+- **No street-address or OSM-id data.** `location_natural_key` is a
+  brewer-scoped stopgap (`<brewer_natural_key>__<city-slug>`), not a true
+  premises identity — the same real building could get two different
+  `dim_location` rows if two unrelated brewers occupied it at different
+  times. Real premises identity needs the `entity-resolution` skill and an
+  OSM way/node id, per CLAUDE.md's gate.
+- **Ambiguous shared-domain groups were left unmerged, not guessed at.** The
+  Swedesboro Brewing family (3 locations, 1 shared domain, no shared name
+  stem) and `Bonesaw Brewing Co.` / `Bonesaw Pilot House` (2 locations, 1
+  shared domain, no shared stem) are each kept as separate
+  `brewer_natural_key`s pending real research into whether they're one
+  brand or several.
+- **Toms River Brewing / Rinn Duin Brewing's site continuity is unverified**
+  — carried forward from the original research note, and modeled as two
+  separate `dim_location` rows rather than asserting continuity.
+- **Border-cohort rows have no `date_added`** in the source data at all
+  (every `border`-cohort row in `newsletter-targets.csv` has that column
+  blank), so their `fact_newsletter_target.added_date` is blank too — not a
+  bug, an honest gap.
+- **Data contradiction found during restructuring, not resolved here:** the
+  two closed New Jersey Iron Hill locations (Maple Shade, Voorhees) carry the
+  note "whole Iron Hill chain closed," but the four border-cohort Iron Hill
+  locations (Newark DE, Wilmington DE, Huntingdon Valley PA, North Wales PA)
+  are still modeled as `is_current = true`, because nothing in the source
+  data records their closure specifically. This needs a human decision, not
+  an inferred one.
