@@ -48,3 +48,6 @@ pipeline/dbt/.user.yml
 
 # DuckDB
 *.duckdb
+
+# Notes
+docs/research/notes/
