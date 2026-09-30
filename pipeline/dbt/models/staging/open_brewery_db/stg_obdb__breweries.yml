@@ -1,0 +1,53 @@
+version: 2
+
+models:
+  - name: stg_obdb__breweries
+    description: >
+      One row per Open Brewery DB brewery/venue in New Jersey, United States,
+      renamed and cast from raw.open_brewery_db_breweries. No joins,
+      filtering, or business logic — see the staging rules in the
+      dbt-conventions skill.
+    columns:
+      - name: brewery_id
+        description: Open Brewery DB's own UUID for the brewery/venue. Source natural key.
+        data_tests:
+          - not_null
+          - unique
+      - name: brewery_name
+        data_tests:
+          - not_null
+      - name: brewery_type
+        description: >
+          Open Brewery DB's own type enum, not this project's classification
+          (CLAUDE.md's four-axis rule applies from intermediate/marts onward,
+          not here). Values as observed live on 2026-09-23
+          (docs/data-sources.md); `large` and `bar` are flagged deprecated by
+          the provider's own documentation but still appear in the data.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - micro
+                  - brewpub
+                  - closed
+                  - planning
+                  - regional
+                  - contract
+                  - large
+                  - proprietor
+                  - taproom
+                  - bar
+                  - nano
+                  - cidery
+                  - beergarden
+                  - location
+      - name: state_province
+        data_tests:
+          - not_null
+      - name: country
+        data_tests:
+          - not_null
+      - name: ingested_at
+        data_tests:
+          - not_null

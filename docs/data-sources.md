@@ -80,7 +80,7 @@ Every source gets a row in its tier's table and a detail block below. Every fiel
 - **License:** MIT (`LICENSE` in the GitHub repo, "Copyright (c) 2025 Open Brewery DB"). The site FAQ adds: "You are welcome to use the dataset for any projects with credit to Open Brewery DB." Give that credit, and keep the MIT notice when redistributing the data.
 - **Rate limit:** none documented; self-limit to 1 req/sec. The site says "No sign-ups, API keys, or rate limits" and the FAQ says the API is community-supported with no SLA. Prefer the bulk dump over the API.
 - **Terms reviewed:** yes — 2026-09-23. Read on the provider's own properties: the site homepage, `/documentation`, `/faq`, `robots.txt` (`Allow: /`), and the GitHub repo `LICENSE` and file listing. The site has no separate terms-of-service page that I found.
-- **Used by:** none yet. Ingest does not exist. `pipeline-engineer` owns it.
+- **Used by:** `scripts/ingest/load_open_brewery_db.mjs` (manual, New Jersey only) → `raw.open_brewery_db_breweries` → `stg_obdb__breweries`.
 - **last_verified:** 2026-09-23. Checks performed today:
   - API responded with a real record.
   - The meta endpoint responded.

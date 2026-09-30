@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: open_brewery_db
+    description: >
+      Open Brewery DB (Tier 1, docs/data-sources.md). Loaded manually into
+      `raw.open_brewery_db_breweries` by
+      scripts/ingest/load_open_brewery_db.mjs — a one-off loader, not a
+      scheduled job, so freshness here reflects how long a stale manual
+      snapshot is tolerable rather than an automated pipeline's cadence.
+    schema: raw
+    loaded_at_field: _ingested_at
+    freshness:
+      # Open Brewery DB itself is infrequently updated (community-maintained,
+      # no stated refresh cadence per docs/data-sources.md); these thresholds
+      # are set loose to match that, not a default.
+      warn_after: {count: 30, period: day}
+      error_after: {count: 90, period: day}
+    tables:
+      - name: open_brewery_db_breweries
+        description: >
+          One row per brewery/venue as returned by the API, loaded filtered
+          to New Jersey, United States only (db/migrations/0002).
