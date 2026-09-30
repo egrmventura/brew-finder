@@ -1,267 +1,267 @@
 "location_sk","location_natural_key",city,county,state,"postal_code","county_alternates","county_note",cohort,"added_date","source_note"
-loc_00000001,cross_keys_brewing_co__williamstown,Williamstown,"Gloucester County","New Jersey",,,,,,"former site; superseded_by: Cross Keys Brewing Co, Mount Laurel"
-loc_00000002,cross_keys_brewing_co__mount_laurel,"Mount Laurel","Burlington County","New Jersey",,,,nj,2026-09-23,"relocation; supersedes Williamstown line. relocated from Williamstown; move date not found; NJCB lists Mount Laurel, Yelp shows 2000 Crawford Pl"
-loc_00000003,third_state_brewing__burlington,Burlington,"Burlington County","New Jersey",,,,nj,2026-09-23,"continuous site across the rename; rename of Third State Brewing at the same Burlington site, after acquisition by Swedesboro Brewing; rename date not found"
-loc_00000004,brotherton_brewing_company__shamong,Shamong,"Burlington County","New Jersey",,,,,,"former site; superseded_by: Brotherton Brewing Company, Atco (closed spring 2025; reopened 2026-06-27 under new owners)"
-loc_00000005,brotherton_brewing_company__atco,Atco,"Camden County","New Jersey",,,,nj,2026-09-23,"relocation; supersedes Shamong line. relocated from Shamong 2020-09; closed spring 2025; reopened 2026-06-27 under new owners (Brewbound/Patch/Brewer Magazine)"
-loc_00000006,ludlam_island_brewery__ocean_view,"Ocean View","Cape May County","New Jersey",,,,,,"former site; superseded_by: Ludlam Island Brewery, Woodbine"
-loc_00000007,ludlam_island_brewery__woodbine,Woodbine,"Cape May County","New Jersey",,,,nj,2026-09-23,"relocation; supersedes Ocean View line. relocated from Ocean View, opened Woodbine 2024"
-loc_00000008,icarus_brewing_company__lakewood,Lakewood,"Ocean County","New Jersey",,,,,,"former site; superseded_by: Icarus Brewing, Brick (2045 Route 88)"
-loc_00000009,icarus_brewing_company__brick,Brick,"Ocean County","New Jersey",,,,nj,2026-09-23,"relocation; supersedes Lakewood line. relocated from Lakewood 2024-06; Brick grand opening 2024-07-20"
-loc_00000010,rinn_duin_brewing__toms_river__pre_rename,"Toms River","Ocean County","New Jersey",,,,,,"UNVERIFIED whether same premises as the post-rename row"
-loc_00000011,rinn_duin_brewing__toms_river__post_rename,"Toms River","Ocean County","New Jersey",,,,nj,2026-09-23,"UNVERIFIED whether same premises as the pre-rename row; rename of Rinn Duin Brewing at the same site (2018, transition completed April 2019); website not found"
-loc_00000012,angry_erik_brewing__lafayette,Lafayette,"Sussex County","New Jersey",,,,,,"former site; superseded_by: Angry Erik Brewing, Newton"
-loc_00000013,angry_erik_brewing__newton,Newton,"Sussex County","New Jersey",,,,nj,2026-09-23,"relocation; supersedes Lafayette line. relocated from Lafayette spring 2019"
-loc_00000014,five_dimes_brewery__westwood,Westwood,"Bergen County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000015,five_dimes_brewery__red_bank,"Red Bank","Monmouth County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000016,kings_road_brewing_company__medford,Medford,"Burlington County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000017,kings_road_brewing_company__haddonfield,Haddonfield,"Camden County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000018,magnify_brewing_company__medford,Medford,"Burlington County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000019,magnify_brewing_company__fairfield,Fairfield,"Essex County","New Jersey",07004-2736,,,nj,2026-09-01,
-loc_00000020,tonewood_brewing__oaklyn,Oaklyn,"Camden County","New Jersey",08107-1500,,,nj,2026-09-01,
-loc_00000021,tonewood_brewing__barrington,Barrington,"Camden County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000022,invertase_brewing__lambertville,Lambertville,"Hunterdon County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000023,invertase_brewing__phillipsburg,Phillipsburg,"Warren County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000024,triumph_brewing_co__princeton,Princeton,"Mercer County","New Jersey",08542-7011,,,nj,2026-09-01,
-loc_00000025,triumph_brewing_co__new_hope,"New Hope","Bucks County",Pennsylvania,18938-1367,,,border,,
-loc_00000026,iron_hill_brewery_restaurant__newark,Newark,"New Castle County",Delaware,19711-7313,,,border,,
-loc_00000027,iron_hill_brewery_restaurant__wilmington,Wilmington,"New Castle County",Delaware,19801-5141,,,border,,
-loc_00000028,iron_hill_brewery_restaurant__huntingdon_valley,"Huntingdon Valley","Montgomery County",Pennsylvania,19006-8362,"Bucks County","included on ZIP overlap: primary county Montgomery County, ZIP also overlaps Bucks County",border,,
-loc_00000029,iron_hill_brewery_restaurant__north_wales,"North Wales","Montgomery County",Pennsylvania,19454-2159,"Bucks County","included on ZIP overlap: primary county Montgomery County, ZIP also overlaps Bucks County",border,,
-loc_00000030,garden_state_beer_company__galloway,Galloway,"Atlantic County","New Jersey",08205-9563,,,nj,2026-09-01,
-loc_00000031,hidden_sands_brewing_company__egg_harbor_township,"Egg Harbor Township","Atlantic County","New Jersey",08234-3807,,,nj,2026-09-01,
-loc_00000032,snouts_and_stouts__hammonton,Hammonton,"Atlantic County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000033,somers_point_brewing_company__somers_point,"Somers Point","Atlantic County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000034,the_buena_connection_brewing_company__buena,Buena,"Atlantic County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000035,the_seed_a_living_beer_project__atlantic_city,"Atlantic City","Atlantic County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000036,three_3s_brewery__hammonton,Hammonton,"Atlantic County","New Jersey",08037-1559,"Camden County",,nj,2026-09-01,
-loc_00000037,tun_tavern_brewery_and_restaurant__atlantic_city,"Atlantic City","Atlantic County","New Jersey",08401-4137,,,nj,2026-09-01,
-loc_00000038,asturia_brewing__hackensack,Hackensack,"Bergen County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000039,bolero_snort_brewery__carlstadt,Carlstadt,"Bergen County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000040,brix_city_brewing__little_ferry,"Little Ferry","Bergen County","New Jersey",07643-1001,,,nj,2026-09-01,
-loc_00000041,gearblock_brewing_company__waldwick,Waldwick,"Bergen County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000042,hackensack_brewing__hackensack,Hackensack,"Bergen County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000043,abyssal_brewing__bordentown,Bordentown,"Burlington County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000044,bout_the_hops_brewing__mount_laurel,"Mount Laurel","Burlington County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000045,brewery_thirty_three__riverton,Riverton,"Burlington County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000046,dr_brewlittles_beer__maple_shade,"Maple Shade","Burlington County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000047,farm_truck_brewing__medford,Medford,"Burlington County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000048,lower_forge_brewery__medford,Medford,"Burlington County","New Jersey",08055-2414,,,nj,2026-09-01,
-loc_00000049,marcellos_coal_fired_restaurant_and_pizza__bordentown,Bordentown,"Burlington County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000050,spellbound_brewing__mount_holly,"Mount Holly","Burlington County","New Jersey",08060-1603,,,nj,2026-09-01,
-loc_00000051,stratosphere_brewing_company__mount_holly,"Mount Holly","Burlington County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000052,subculture_artisan_ales__florence,Florence,"Burlington County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000053,tindall_road_brewery__bordentown,Bordentown,"Burlington County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000054,village_idiot_brewing_company__mount_holly,"Mount Holly","Burlington County","New Jersey",08060-1702,,,nj,2026-09-01,
-loc_00000055,zeds_beer_bado_brewing__marlton,Marlton,"Burlington County","New Jersey",08053-3007,,,nj,2026-09-01,
-loc_00000056,berlin_brewing_company__berlin,Berlin,"Camden County","New Jersey",08009-1902,,,nj,2026-09-01,
-loc_00000057,double_nickel_brewing_company__pennsauken,Pennsauken,"Camden County","New Jersey",08110-1330,,,nj,2026-09-01,
-loc_00000058,eclipse_brewing__merchantville,Merchantville,"Camden County","New Jersey",08109-2607,,,nj,2026-09-01,
-loc_00000059,mechanical_brewery__cherry_hill,"Cherry Hill","Camden County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000060,tanner_brewing_company__haddon_heights,"Haddon Heights","Camden County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000061,the_raccoon_taproom_swedesboro_brewing__collingswood,Collingswood,"Camden County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000062,whims_brewing__atco,Atco,"Camden County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000063,anglesea_aleworks__wildwood,Wildwood,"Cape May County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000064,avalon_brew_pub__avalon,Avalon,"Cape May County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000065,behr_brewing__cape_may,"Cape May","Cape May County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17); name corrected to the brewery's own"
-loc_00000066,cape_may_brewing_company_rio_grande__rio_grande,"Rio Grande","Cape May County","New Jersey",08242-2210,,,nj,2026-09-01,"duplicate record 'Cape May Brewing Company, Cape May' folded in: Cape May Brewing Company, Rio Grande (single location, 1250 Hornet Rd)"
-loc_00000067,cold_spring_brewery__cape_may,"Cape May","Cape May County","New Jersey",08204-4634,,,nj,2026-09-01,
-loc_00000068,gusto_brewing_co__north_cape_may,"North Cape May","Cape May County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000069,meyers_lighthouse_brewing__ocean_view,"Ocean View","Cape May County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000070,mudhen_brewing_company__wildwood,Wildwood,"Cape May County","New Jersey",08260,,,nj,2026-09-01,
-loc_00000071,obscura_brewing_co__cape_may_court_house,"Cape May Court House","Cape May County","New Jersey",,,,nj,2026-09-23,"successor to Bucket Brigade Brewery (closed 2025-01-26), same site, rebranded by owner's son; website not found"
-loc_00000072,slack_tide_brewing_company__cape_may_court_house,"Cape May Court House","Cape May County","New Jersey",08210-1200,,,nj,2026-09-01,
-loc_00000073,whale_tale_brewing_company__cape_may_court_house,"Cape May Court House","Cape May County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000074,glasstown_brewing__millville,Millville,"Cumberland County","New Jersey",08332-4818,,,nj,2026-09-01,
-loc_00000075,wander_back_beerworks__vineland,Vineland,"Cumberland County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000076,cricket_hill_brewing_co_inc__fairfield,Fairfield,"Essex County","New Jersey",07004-3308,,,nj,2026-09-01,
-loc_00000077,gaslight_brewery_and_restaurant__south_orange,"South Orange","Essex County","New Jersey",07079-1716,,,nj,2026-09-01,
-loc_00000078,montclair_brewery__montclair,Montclair,"Essex County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000079,newark_local_beer__newark,Newark,"Essex County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000080,pallet_brewing_company__maplewood,Maplewood,"Essex County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000081,soma_brewing__maplewood,Maplewood,"Essex County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000082,varitage_brew_works__bloomfield,Bloomfield,"Essex County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000083,13th_child_brewing__williamstown,Williamstown,"Gloucester County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000084,axe_and_arrow_brewing__glassboro,Glassboro,"Gloucester County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000085,bonesaw_brewing_co__glassboro,Glassboro,"Gloucester County","New Jersey",08028,,,nj,2026-09-01,
-loc_00000086,bonesaw_pilot_house__deptford,Deptford,"Gloucester County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000087,core3brewery__clayton,Clayton,"Gloucester County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000088,death_of_the_fox__clarksboro,Clarksboro,"Gloucester County","New Jersey",08020-1161,,,nj,2026-09-01,
-loc_00000089,neck_of_the_woods_brewing__pitman,Pitman,"Gloucester County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000090,sons_of_barley_beer_co__woodbury_heights,"Woodbury Heights","Gloucester County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000091,swedesboro_brewing_company__swedesboro,Swedesboro,"Gloucester County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000092,westville_brewery__westville,Westville,"Gloucester County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000093,902_brewing__jersey_city,"Jersey City","Hudson County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000094,departed_soles_brewing__jersey_city,"Jersey City","Hudson County","New Jersey",07302-2900,,,nj,2026-09-01,
-loc_00000095,hoboken_brewing_company__hoboken,Hoboken,"Hudson County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000096,new_jersey_beer_co__north_bergen,"North Bergen","Hudson County","New Jersey",07047-2430,,,nj,2026-09-01,
-loc_00000097,conclave_brewing__flemington,Flemington,"Hunterdon County","New Jersey",08822-5750,,,nj,2026-09-01,"NJCB lists Raritan Township; same Minneakoning Rd trade center as the Flemington address"
-loc_00000098,descendants_brewing_company__milford,Milford,"Hunterdon County","New Jersey",08848-1264,,,nj,2026-09-01,"NJCB still lists this Milford brewpub under its former name, The Ship Inn Restaurant & Brewery"
-loc_00000099,esker_hart_artisan_ales__high_bridge,"High Bridge","Hunterdon County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17); directory spells it 'Eskar Hart', brewery's own spelling is 'Esker Hart'"
-loc_00000100,lone_eagle_brewing__flemington,Flemington,"Hunterdon County","New Jersey",08822-1581,,,nj,2026-09-01,
-loc_00000101,odd_bird_brewing__stockton,Stockton,"Hunterdon County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000102,opportunity_brewing_company__flemington,Flemington,"Hunterdon County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17); production brewery with no tasting room"
-loc_00000103,readington_brewery_and_hop_farm__readington,Readington,"Hunterdon County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17); postal town is Neshanic Station"
-loc_00000104,sunken_silo_brew_works__lebanon,Lebanon,"Hunterdon County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000105,wild_fern_brewing__frenchtown,Frenchtown,"Hunterdon County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000106,bent_iron_brewing_company__hamilton,Hamilton,"Mercer County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000107,needle_creek_farm_brewery_company__pennington,Pennington,"Mercer County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000108,old_hights_brewing_company__hightstown,Hightstown,"Mercer County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000109,river_horse_brewing_company__ewing,Ewing,"Mercer County","New Jersey",08628-1546,,,nj,2026-09-01,
-loc_00000110,the_druery__lawrenceville,Lawrenceville,"Mercer County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000111,troon_brewing__hopewell,Hopewell,"Mercer County","New Jersey",08525-3111,"Hunterdon County; Somerset County",,nj,2026-09-01,
-loc_00000112,cypress_brewing_company__edison,Edison,"Middlesex County","New Jersey",08837-3844,,,nj,2026-09-01,"UNRESOLVED: NJCB lists it closed June 2026; a second source (Yelp, Aug 2026) does not mark it closed; kept pending confirmation"
-loc_00000113,harvest_moon_brewery_cafe__new_brunswick,"New Brunswick","Middlesex County","New Jersey",08901-2018,,,nj,2026-09-01,
-loc_00000114,the_hidden_brewery__middlesex,Middlesex,"Middlesex County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17); opened in the former Ashton Brewing space"
-loc_00000115,alternate_ending_beer_co__aberdeen,Aberdeen,"Monmouth County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000116,asbury_park_brewery__asbury_park,"Asbury Park","Monmouth County","New Jersey",07712-6527,,,nj,2026-09-01,
-loc_00000117,bakes_brewing_company__wall,Wall,"Monmouth County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17); name corrected to the brewery's own"
-loc_00000118,beach_haus_brewery__belmar,Belmar,"Monmouth County","New Jersey",07719-2705,,,nj,2026-09-01,
-loc_00000119,belford_brewing_company__belford,Belford,"Monmouth County","New Jersey",07718-1144,,,nj,2026-09-01,
-loc_00000120,birdsmouth_beer__oceanport,Oceanport,"Monmouth County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000121,carton_brewing_co__atlantic_highlands,"Atlantic Highlands","Monmouth County","New Jersey",07716-1230,,,nj,2026-09-01,
-loc_00000122,erratic_fermentations__bradley_beach,"Bradley Beach","Monmouth County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000123,kane_brewing__ocean,Ocean,"Monmouth County","New Jersey",07712-3941,,,nj,2026-09-01,
-loc_00000124,little_dog_brewing_co__neptune_city,"Neptune City","Monmouth County","New Jersey",07753-6500,,,nj,2026-09-01,
-loc_00000125,screamin_hill_brewery__cream_ridge,"Cream Ridge","Monmouth County","New Jersey",08514-1617,"Ocean County",,nj,2026-09-01,
-loc_00000126,seven_sons_brewery__howell,Howell,"Monmouth County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000127,skinny_flowers_brewing__oceanport,Oceanport,"Monmouth County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000128,source_brewing_company__colts_neck,"Colts Neck","Monmouth County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000129,tall_oaks_farm_brewery__farmingdale,Farmingdale,"Monmouth County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000130,triumph_brewing_company__red_bank,"Red Bank","Monmouth County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000131,twin_lights_brewing__tinton_falls,"Tinton Falls","Monmouth County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000132,wild_air_beerworks__asbury_park,"Asbury Park","Monmouth County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000133,autodidact_beer__morris_plains,"Morris Plains","Morris County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000134,chilton_mill_brewing__long_valley,"Long Valley","Morris County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000135,diamond_spring_brewing_company__denville,Denville,"Morris County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000136,double_tap_brewing__whippany,Whippany,"Morris County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000137,fort_nonsense__randolph,Randolph,"Morris County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000138,glenbrook_brewery__morristown,Morristown,"Morris County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000139,high_point_brewing_co_inc__butler,Butler,"Morris County","New Jersey",07405-1377,,,nj,2026-09-01,
-loc_00000140,long_valley_pub_and_brewery__long_valley,"Long Valley","Morris County","New Jersey",07853,,,nj,2026-09-01,
-loc_00000141,oakflower_brewing_company__millington,Millington,"Morris County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000142,the_rosecourt_brewery__madison,Madison,"Morris County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000143,twin_elephant_brewing_company__chatham,Chatham,"Morris County","New Jersey",07928-2759,,,nj,2026-09-01,
-loc_00000144,artisans_brewery_italian_grill__toms_river,"Toms River","Ocean County","New Jersey",08753-8305,,,nj,2026-09-01,
-loc_00000145,battle_river_brewing__toms_river,"Toms River","Ocean County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000146,bent_elbow_brewery__west_creek,"West Creek","Ocean County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000147,booterbeer_brewing_company__new_egypt,"New Egypt","Ocean County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000148,heavy_reel_brewing__seaside_heights,"Seaside Heights","Ocean County","New Jersey",08751,,,nj,2026-09-01,
-loc_00000149,last_wave_brewing_co__point_pleasant_beach,"Point Pleasant Beach","Ocean County","New Jersey",08742-2536,,,nj,2026-09-01,
-loc_00000150,leaning_fathers_brewing__brick,Brick,"Ocean County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000151,lokal_brewing__point_pleasant,"Point Pleasant","Ocean County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000152,manafirkin__manahawkin,Manahawkin,"Ocean County","New Jersey",08050,,,nj,2026-09-01,
-loc_00000153,oyster_creek_brewing_company__waretown,Waretown,"Ocean County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000154,pinelands_brewing__little_egg_harbor_twp,"Little Egg Harbor Twp","Ocean County","New Jersey",08087-4259,"Burlington County",,nj,2026-09-01,
-loc_00000155,ship_bottom_brewery__beach_haven,"Beach Haven","Ocean County","New Jersey",08008-2053,,,nj,2026-09-01,
-loc_00000156,ghost_hawk_brewing_co__clifton,Clifton,"Passaic County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000157,seven_tribesmen_brewery__wayne,Wayne,"Passaic County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000158,bullhide_brewery__pilesgrove,Pilesgrove,"Salem County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000159,farmers_and_bankers_brewing__woodstown,Woodstown,"Salem County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000160,lost_elephant_brewing_company__elmer,Elmer,"Salem County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000161,brooks_brewery_at_northside_lounge__manville,Manville,"Somerset County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17); listed as temporarily closed"
-loc_00000162,flounder_brewing_co__hillsborough,Hillsborough,"Somerset County","New Jersey",08844-1916,,,nj,2026-09-01,
-loc_00000163,village_brewing_company__somerville,Somerville,"Somerset County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000164,kroghs_restaurant_and_brewpub__sparta,Sparta,"Sussex County","New Jersey",07871-1823,,,nj,2026-09-01,
-loc_00000165,twin_soles_brewing__augusta,Augusta,"Sussex County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000166,vernon_brewing_formerly_alias_brew_works__vernon,Vernon,"Sussex County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17); website is still the aliasbrewworks.com domain"
-loc_00000167,bull_n_bear_brewery__summit,Summit,"Union County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17); an older BeerAdvocate thread reports an ABC shutdown, but 2026 listings show it operating"
-loc_00000168,climax_brewing_co__roselle_park,"Roselle Park","Union County","New Jersey",07204-1402,,,nj,2026-09-01,
-loc_00000169,lions_roar_brewing__westfield,Westfield,"Union County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000170,trap_rock_restaurant_and_brewery__berkeley_heights,"Berkeley Heights","Union County","New Jersey",07922-1214,,,nj,2026-09-01,
-loc_00000171,two_ton_brewing__kenilworth,Kenilworth,"Union County","New Jersey",07033,,,nj,2026-09-01,
-loc_00000172,untied_brewing_company__new_providence,"New Providence","Union County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000173,wet_ticket_brewing__rahway,Rahway,"Union County","New Jersey",07065-,,,nj,2026-09-01,
-loc_00000174,yale_terrace_brewing__cranford,Cranford,"Union County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
-loc_00000175,buck_hill_brewery_and_restaurant__blairstown,Blairstown,"Warren County","New Jersey",07825,"Sussex County",,nj,2026-09-01,
-loc_00000176,czig_meister_brewing_co__hackettstown,Hackettstown,"Warren County","New Jersey",07840-2156,"Morris County",,nj,2026-09-01,
-loc_00000177,jersey_girl_brewing_company__hackettstown,Hackettstown,"Warren County","New Jersey",07840-5535,"Morris County",,nj,2026-09-01,
-loc_00000178,man_skirt_brewing__hackettstown,Hackettstown,"Warren County","New Jersey",07840-1930,"Morris County",,nj,2026-09-01,
-loc_00000179,blue_earl_brewing_company__smyrna,Smyrna,"Kent County",Delaware,19977-3715,"New Castle County","included on ZIP overlap: primary county Kent County, ZIP also overlaps New Castle County",border,,
-loc_00000180,brick_works_brewing_and_eats__smyrna,Smyrna,"Kent County",Delaware,19977-1573,"New Castle County","included on ZIP overlap: primary county Kent County, ZIP also overlaps New Castle County",border,,
-loc_00000181,argilla_brewing_co_pietros_pizza__newark,Newark,"New Castle County",Delaware,19711-7242,,,border,,
-loc_00000182,bellefonte_brewing_co__wilmington,Wilmington,"New Castle County",Delaware,19808-6043,,,border,,
-loc_00000183,dew_point_brewing__yorklyn,Yorklyn,"New Castle County",Delaware,19736-,,,border,,
-loc_00000184,midnight_oil_brewing__newark,Newark,"New Castle County",Delaware,19702,,,border,,
-loc_00000185,midnight_oil_brewing_company__newark,Newark,"New Castle County",Delaware,19702-3348,,,border,,
-loc_00000186,pizza_by_elizabeths__greenville,Greenville,"New Castle County",Delaware,19807-2321,,,border,,
-loc_00000187,stewarts_brewing_co__bear,Bear,"New Castle County",Delaware,19701-3026,,,border,,
-loc_00000188,stitch_house_brewery__wilmington,Wilmington,"New Castle County",Delaware,19801,,,border,,
-loc_00000189,twin_lakes_brewing_co__wilmington,Wilmington,"New Castle County",Delaware,19804-2445,,,border,,
-loc_00000190,volunteer_brewing_company__middletown,Middletown,"New Castle County",Delaware,19709-1040,,,border,,
-loc_00000191,roscoe_brewing_company__roscoe,Roscoe,"Delaware County","New York",12776-6418,"Sullivan County","included on ZIP overlap: primary county Delaware County, ZIP also overlaps Sullivan County",border,,
-loc_00000192,clemson_bros_brewery__middletown,Middletown,"Orange County","New York",10940-5059,"Sullivan County",,border,,
-loc_00000193,equilibrium_brewery__middletown,Middletown,"Orange County","New York",10940,"Sullivan County",,border,,
-loc_00000194,fox_n_hare_brewing_company__port_jervis,"Port Jervis","Orange County","New York",12771-2415,,,border,,
-loc_00000195,glenmere_brewing_co_inc__florida,Florida,"Orange County","New York",10921-1124,,,border,,
-loc_00000196,long_lot_farm_brewery__chester,Chester,"Orange County","New York",10918,,,border,,
-loc_00000197,newburgh_brewing_company__newburgh,Newburgh,"Orange County","New York",12550-5640,,,border,,
-loc_00000198,pine_island_brewing__pine_island,"Pine Island","Orange County","New York",10969-1715,,,border,,
-loc_00000199,rushing_duck_brewing_co__chester,Chester,"Orange County","New York",10918-1283,,,border,,
-loc_00000200,westtown_brew_works__westtown,Westtown,"Orange County","New York",10998-,,,border,,
-loc_00000201,andean_brewing__blauvelt,Blauvelt,"Rockland County","New York",10913-1162,,,border,,
-loc_00000202,defiant_brewing_co__pearl_river,"Pearl River","Rockland County","New York",10965-2360,,,border,,
-loc_00000203,district_96_beer_factory__new_city,"New City","Rockland County","New York",10956,,,border,,
-loc_00000204,gentle_giant_brewing_company__pearl_river,"Pearl River","Rockland County","New York",10965-2318,,,border,,
-loc_00000205,industrial_arts_brewing_co__garnerville,Garnerville,"Rockland County","New York",10923-1261,,,border,,
-loc_00000206,catskill_brewery__livingston_manor,"Livingston Manor","Sullivan County","New York",12758-0033,"Ulster County; Delaware County",,border,,
-loc_00000207,shrewd_fox_brewery__eldred,Eldred,"Sullivan County","New York",12732,,,border,,
-loc_00000208,broken_goblet_brewing__bristol,Bristol,"Bucks County",Pennsylvania,19007-1521,,,border,,
-loc_00000209,bucks_county_brewery__pipersville,Pipersville,"Bucks County",Pennsylvania,18947-1083,,,border,,
-loc_00000210,free_will_brewing_company__perkasie,Perkasie,"Bucks County",Pennsylvania,18944-1683,,,border,,
-loc_00000211,great_barn_brewery__new_hope,"New Hope","Bucks County",Pennsylvania,18938,,,border,,
-loc_00000212,mad_princes_brewing__buckingham,Buckingham,"Bucks County",Pennsylvania,18902,,,border,,
-loc_00000213,neshaminy_creek_brewing_co__croydon,Croydon,"Bucks County",Pennsylvania,19021-7510,,,border,,
-loc_00000214,the_proper_brewing_company__quakertown,Quakertown,"Bucks County",Pennsylvania,18951-1200,"Lehigh County",,border,,
-loc_00000215,towerhill_brewery__chalfont,Chalfont,"Bucks County",Pennsylvania,18914-3020,"Montgomery County",,border,,
-loc_00000216,vault_brewing_co__morrisville,Morrisville,"Bucks County",Pennsylvania,19067-1511,,,border,,
-loc_00000217,taylor_house_brewing_co__catasauqua,Catasauqua,"Lehigh County",Pennsylvania,18032,"Northampton County","included on ZIP overlap: primary county Lehigh County, ZIP also overlaps Northampton County",border,,
-loc_00000218,barley_creek_brewing_co__tannersville,Tannersville,"Monroe County",Pennsylvania,18372-7893,,,border,,
-loc_00000219,pocono_brewery_company__swiftwater,Swiftwater,"Monroe County",Pennsylvania,18370-7773,,,border,,
-loc_00000220,shawnee_craft_brewery__shawnee_on_delaware,"Shawnee on Delaware","Monroe County",Pennsylvania,18356,,,border,,
-loc_00000221,crooked_eye_brewery__hatboro,Hatboro,"Montgomery County",Pennsylvania,19040-2618,"Bucks County","included on ZIP overlap: primary county Montgomery County, ZIP also overlaps Bucks County",border,,
-loc_00000222,imprint_beer_company__hatfield,Hatfield,"Montgomery County",Pennsylvania,19440-3271,"Bucks County","included on ZIP overlap: primary county Montgomery County, ZIP also overlaps Bucks County",border,,
-loc_00000223,moss_mill_brewing__huntingdon_valley,"Huntingdon Valley","Montgomery County",Pennsylvania,19006-1630,"Bucks County","included on ZIP overlap: primary county Montgomery County, ZIP also overlaps Bucks County",border,,
-loc_00000224,naked_brewing_co__huntingdon_valley,"Huntingdon Valley","Montgomery County",Pennsylvania,19006-1501,"Bucks County","included on ZIP overlap: primary county Montgomery County, ZIP also overlaps Bucks County",border,,
-loc_00000225,perkiomen_valley_brewery__green_lane,"Green Lane","Montgomery County",Pennsylvania,18054,"Bucks County","included on ZIP overlap: primary county Montgomery County, ZIP also overlaps Bucks County",border,,
-loc_00000226,bangor_trust_brewing__bangor,Bangor,"Northampton County",Pennsylvania,18013-2601,,,border,,
-loc_00000227,birthright_brewing_co__nazareth,Nazareth,"Northampton County",Pennsylvania,18064-2037,,,border,,
-loc_00000228,bonn_place_brewing__bethlehem,Bethlehem,"Northampton County",Pennsylvania,18015,"Lehigh County",,border,,
-loc_00000229,cave_brewing_co__bethlehem,Bethlehem,"Northampton County",Pennsylvania,18015-4219,"Lehigh County",,border,,
-loc_00000230,hop_hill_brewing_company__bethlehem,Bethlehem,"Northampton County",Pennsylvania,18015-5307,"Lehigh County",,border,,
-loc_00000231,lost_tavern_brewing__hellertown,Hellertown,"Northampton County",Pennsylvania,18055-1540,"Bucks County",,border,,
-loc_00000232,the_brewery_b_ser_geist_brewing_co_llc__easton,Easton,"Northampton County",Pennsylvania,18042-1474,"Bucks County",,border,,
-loc_00000233,two_rivers_brewing_co__easton,Easton,"Northampton County",Pennsylvania,18042-3517,"Bucks County",,border,,
-loc_00000234,weyerbacher_brewing_co__easton,Easton,"Northampton County",Pennsylvania,18042-7379,"Bucks County",,border,,
-loc_00000235,wallenpaupack_brewing_company__hawley,Hawley,"Pike County",Pennsylvania,18428-1500,"Wayne County",,border,,
-loc_00000236,jam_room_brewing_co__newfoundland,Newfoundland,"Wayne County",Pennsylvania,18445-5210,"Pike County","included on ZIP overlap: primary county Wayne County, ZIP also overlaps Pike County",border,,
-loc_00000237,tomfoolery_brewing__hammonton,Hammonton,"Atlantic County","New Jersey",,,,,,
-loc_00000238,tuckahoe_brewing_co__egg_harbor_township,"Egg Harbor Township","Atlantic County","New Jersey",,,,,,
-loc_00000239,vinyl_brewing_company_llc__hammonton,Hammonton,"Atlantic County","New Jersey",,,,,,
-loc_00000240,the_alementary__hackensack,Hackensack,"Bergen County","New Jersey",,,,,,
-loc_00000241,common_sense_brewing__bordentown,Bordentown,"Burlington County","New Jersey",,,,,,
-loc_00000242,iron_hill_brewery_restaurant_maple_shade__maple_shade,"Maple Shade","Burlington County","New Jersey",,,,,,
-loc_00000243,nale_house_brewing_co__medford,Medford,"Burlington County","New Jersey",,,,,,
-loc_00000244,atco_brewing_llc__atco,Atco,"Camden County","New Jersey",,,,,,
-loc_00000245,devils_creek_brewery__collingswood,Collingswood,"Camden County","New Jersey",,,,,,"superseded_by: Raccoon Taproom (Swedesboro Brewing), Collingswood, opened 2024-06-01 at this site"
-loc_00000246,flying_fish_brewing_co__somerdale,Somerdale,"Camden County","New Jersey",,,,,,
-loc_00000247,forgotten_boardwalk_brewing__cherry_hill,"Cherry Hill","Camden County","New Jersey",,,,,,
-loc_00000248,iron_hill_brewery_restaurant_voorhees__voorhees,Voorhees,"Camden County","New Jersey",,,,,,
-loc_00000249,lunacy_brewing_company__haddon_heights,"Haddon Heights","Camden County","New Jersey",,,,,,
-loc_00000250,7_mile_brewery__rio_grande,"Rio Grande","Cape May County","New Jersey",,,,,,
-loc_00000251,bucket_brigade_brewery__cape_may_court_house,"Cape May Court House","Cape May County","New Jersey",,,,,,"superseded_by: Obscura Brewing Co, same site, rebranded by the owner's son"
-loc_00000252,brinx_jones_brewery__vineland,Vineland,"Cumberland County","New Jersey",,,,,,
-loc_00000253,anheuser_busch_inc_newark__newark,Newark,"Essex County","New Jersey",,,,,,
-loc_00000254,eight_sand_beer_co__woodbury,Woodbury,"Gloucester County","New Jersey",,,,,,"superseded_by: Freckled Jawn Brewing (opening expected October 2026, not yet open)"
-loc_00000255,human_village_brewing_co__pitman,Pitman,"Gloucester County","New Jersey",,,,,,
-loc_00000256,kelly_green_brewing_co__pitman,Pitman,"Gloucester County","New Jersey",,,,,,
-loc_00000257,demented_brewing_co__middlesex,Middlesex,"Middlesex County","New Jersey",,,,,,"superseded_by: The Hidden Brewery later opened in Middlesex NJ (different site history: former Ashton Brewing)"
-loc_00000258,j_j_bitting_brewing_co__woodbridge,Woodbridge,"Middlesex County","New Jersey",,,,,,
-loc_00000259,birravino__red_bank,"Red Bank","Monmouth County","New Jersey",,,,,,
-loc_00000260,bradley_brew_project__bradley_beach,"Bradley Beach","Monmouth County","New Jersey",,,,,,"superseded_by: Brand continues, brewed at Tall Oaks Farm + Brewery, Farmingdale; Erratic Fermentations took the Bradley Beach space"
-loc_00000261,dark_city_brewing_company__asbury_park,"Asbury Park","Monmouth County","New Jersey",,,,,,
-loc_00000262,jughandle_brewing_co_llc__tinton_falls,"Tinton Falls","Monmouth County","New Jersey",,,,,,"superseded_by: Twin Lights Brewing now occupies this Tinton Falls location"
-loc_00000263,raritan_bay_brewing_llc__keansburg,Keansburg,"Monmouth County","New Jersey",,,,,,
-loc_00000264,backward_flag_brewing__forked_river,"Forked River","Ocean County","New Jersey",,,,,,
-loc_00000265,frye_brewing__point_pleasant_boro,"Point Pleasant Boro","Ocean County","New Jersey",,,,,,"superseded_by: Lokal Brewing Co (opened October 2025) at 2257 Bridge Ave"
-loc_00000266,the_referend_bier_blendery__pennington,Pennington,"Mercer County","New Jersey",,,,,,"superseded_by: The Referend Bier Blendery, Kutztown, PA"
+408ad56b8734d2f762cc6e8cdb099537,cross_keys_brewing_co__williamstown,Williamstown,"Gloucester County","New Jersey",,,,,,"former site; superseded_by: Cross Keys Brewing Co, Mount Laurel"
+55fc573f6104d64318f97be0f93ee61d,cross_keys_brewing_co__mount_laurel,"Mount Laurel","Burlington County","New Jersey",,,,nj,2026-09-23,"relocation; supersedes Williamstown line. relocated from Williamstown; move date not found; NJCB lists Mount Laurel, Yelp shows 2000 Crawford Pl"
+5ee9dba02750609d06bb331a29af6705,third_state_brewing__burlington,Burlington,"Burlington County","New Jersey",,,,nj,2026-09-23,"continuous site across the rename; rename of Third State Brewing at the same Burlington site, after acquisition by Swedesboro Brewing; rename date not found"
+e04c3a002aa9b3d7d7427c25e2762854,brotherton_brewing_company__shamong,Shamong,"Burlington County","New Jersey",,,,,,"former site; superseded_by: Brotherton Brewing Company, Atco (closed spring 2025; reopened 2026-06-27 under new owners)"
+cfcc1471c6798d419cbfa616d835b6f0,brotherton_brewing_company__atco,Atco,"Camden County","New Jersey",,,,nj,2026-09-23,"relocation; supersedes Shamong line. relocated from Shamong 2020-09; closed spring 2025; reopened 2026-06-27 under new owners (Brewbound/Patch/Brewer Magazine)"
+fff804c4b310597139e690399d8e76db,ludlam_island_brewery__ocean_view,"Ocean View","Cape May County","New Jersey",,,,,,"former site; superseded_by: Ludlam Island Brewery, Woodbine"
+807259ce2c5f59622be91dc805b0c4f8,ludlam_island_brewery__woodbine,Woodbine,"Cape May County","New Jersey",,,,nj,2026-09-23,"relocation; supersedes Ocean View line. relocated from Ocean View, opened Woodbine 2024"
+b79f7ce098e7d338d3eaea9f37bbb4e0,icarus_brewing_company__lakewood,Lakewood,"Ocean County","New Jersey",,,,,,"former site; superseded_by: Icarus Brewing, Brick (2045 Route 88)"
+22f089c52e310a327ca14df037fad250,icarus_brewing_company__brick,Brick,"Ocean County","New Jersey",,,,nj,2026-09-23,"relocation; supersedes Lakewood line. relocated from Lakewood 2024-06; Brick grand opening 2024-07-20"
+e1121e1e6e3f49a5f29a555caa07c7f6,rinn_duin_brewing__toms_river__pre_rename,"Toms River","Ocean County","New Jersey",,,,,,"UNVERIFIED whether same premises as the post-rename row"
+8a65a6e40ec3deb0e8a2f5afc4615249,rinn_duin_brewing__toms_river__post_rename,"Toms River","Ocean County","New Jersey",,,,nj,2026-09-23,"UNVERIFIED whether same premises as the pre-rename row; rename of Rinn Duin Brewing at the same site (2018, transition completed April 2019); website not found"
+07e2b3cf036310a0da3ead3fda108e2e,angry_erik_brewing__lafayette,Lafayette,"Sussex County","New Jersey",,,,,,"former site; superseded_by: Angry Erik Brewing, Newton"
+81a05284c817f6f5de45c9472b6815c8,angry_erik_brewing__newton,Newton,"Sussex County","New Jersey",,,,nj,2026-09-23,"relocation; supersedes Lafayette line. relocated from Lafayette spring 2019"
+afa67c1faa39c7d67490a977b92c5ed7,five_dimes_brewery__westwood,Westwood,"Bergen County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+cf11d12b18dadcd982fe9e0808ba6051,five_dimes_brewery__red_bank,"Red Bank","Monmouth County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+4a31cf4e642354602479cb4ad0b70cff,kings_road_brewing_company__medford,Medford,"Burlington County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+d0f27a0a5917ca2dcde28da758e507f5,kings_road_brewing_company__haddonfield,Haddonfield,"Camden County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+17f01cc26d26e0d03ca2b86ed6fd7051,magnify_brewing_company__medford,Medford,"Burlington County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+673128c5d2c13474b7ae7b088ad87173,magnify_brewing_company__fairfield,Fairfield,"Essex County","New Jersey",07004-2736,,,nj,2026-09-01,
+9b9028c28e288bd7c10704728fd876f9,tonewood_brewing__oaklyn,Oaklyn,"Camden County","New Jersey",08107-1500,,,nj,2026-09-01,
+7431eb39778151ae722a638d266969d3,tonewood_brewing__barrington,Barrington,"Camden County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+a92c8ef40b30c8b3c5634245c9ad7a99,invertase_brewing__lambertville,Lambertville,"Hunterdon County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+cf7877156436f852310e265342f202cd,invertase_brewing__phillipsburg,Phillipsburg,"Warren County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+fddf674d807d0159936e698d3f552752,triumph_brewing_co__princeton,Princeton,"Mercer County","New Jersey",08542-7011,,,nj,2026-09-01,
+fa168a56bf5e742fdc6bd7b95e6f7024,triumph_brewing_co__new_hope,"New Hope","Bucks County",Pennsylvania,18938-1367,,,border,,
+dd9e0c84ede61bcc0569441420a982de,iron_hill_brewery_restaurant__newark,Newark,"New Castle County",Delaware,19711-7313,,,border,,
+10e9068377bcc213a38704d2eb82abe9,iron_hill_brewery_restaurant__wilmington,Wilmington,"New Castle County",Delaware,19801-5141,,,border,,
+823d1300933eb8727496bf11ead2fcc6,iron_hill_brewery_restaurant__huntingdon_valley,"Huntingdon Valley","Montgomery County",Pennsylvania,19006-8362,"Bucks County","included on ZIP overlap: primary county Montgomery County, ZIP also overlaps Bucks County",border,,
+d89247b30fb7d389ae44ec23a849fffe,iron_hill_brewery_restaurant__north_wales,"North Wales","Montgomery County",Pennsylvania,19454-2159,"Bucks County","included on ZIP overlap: primary county Montgomery County, ZIP also overlaps Bucks County",border,,
+076ae8cbb6dd7d5c11e61900a8f8c637,garden_state_beer_company__galloway,Galloway,"Atlantic County","New Jersey",08205-9563,,,nj,2026-09-01,
+cfc0abd0e4636c4110fb5e9eabd34b0d,hidden_sands_brewing_company__egg_harbor_township,"Egg Harbor Township","Atlantic County","New Jersey",08234-3807,,,nj,2026-09-01,
+e9090dc5e257ab45aeb9dbe02e4c5bf9,snouts_and_stouts__hammonton,Hammonton,"Atlantic County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+4636884458cb8ad18b45d342587e33f5,somers_point_brewing_company__somers_point,"Somers Point","Atlantic County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+57456c0c762f5afbcaad8cb073ea9041,the_buena_connection_brewing_company__buena,Buena,"Atlantic County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+5511f93614ce01c1624c599d7c39a626,the_seed_a_living_beer_project__atlantic_city,"Atlantic City","Atlantic County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+649859acb5b36abc413fcd17eef120e5,three_3s_brewery__hammonton,Hammonton,"Atlantic County","New Jersey",08037-1559,"Camden County",,nj,2026-09-01,
+4e0ea2ced169be5490063ac3542cb863,tun_tavern_brewery_and_restaurant__atlantic_city,"Atlantic City","Atlantic County","New Jersey",08401-4137,,,nj,2026-09-01,
+84b93e72fc8a726582c080e1046b60fa,asturia_brewing__hackensack,Hackensack,"Bergen County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+bb1e5e2099fd3b2d5418072b65ec0e53,bolero_snort_brewery__carlstadt,Carlstadt,"Bergen County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+a3a07e7affb3142fbe5d866ae5446057,brix_city_brewing__little_ferry,"Little Ferry","Bergen County","New Jersey",07643-1001,,,nj,2026-09-01,
+10aa090853d90ab7a4c81da022ea264b,gearblock_brewing_company__waldwick,Waldwick,"Bergen County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+d73457cf8892132e12794248f35d6a65,hackensack_brewing__hackensack,Hackensack,"Bergen County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+af1c59b479136f9d375ecdcbe937bbc2,abyssal_brewing__bordentown,Bordentown,"Burlington County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+57c733791849038436c5c92df0e61388,bout_the_hops_brewing__mount_laurel,"Mount Laurel","Burlington County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+118d595b105ad060c9dc9b46a0c4f894,brewery_thirty_three__riverton,Riverton,"Burlington County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+e5f73076dd833ae558da880e8b14634e,dr_brewlittles_beer__maple_shade,"Maple Shade","Burlington County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+44114c0b95648713d680172965a5a2c7,farm_truck_brewing__medford,Medford,"Burlington County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+62dc919e77d647ed86fc420f2863cb67,lower_forge_brewery__medford,Medford,"Burlington County","New Jersey",08055-2414,,,nj,2026-09-01,
+9edc01ee7084590f96f8e0895353abe7,marcellos_coal_fired_restaurant_and_pizza__bordentown,Bordentown,"Burlington County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+c289611af16f395666facc682341c159,spellbound_brewing__mount_holly,"Mount Holly","Burlington County","New Jersey",08060-1603,,,nj,2026-09-01,
+6439cd5f48fcaf1d9740bcc66aff22b5,stratosphere_brewing_company__mount_holly,"Mount Holly","Burlington County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+0eddf2741869655572da14eaa6851e91,subculture_artisan_ales__florence,Florence,"Burlington County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+2a5fd9e4aa6df136492313f589db9f11,tindall_road_brewery__bordentown,Bordentown,"Burlington County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+8bbfa01f4a051cc7292931a04678d462,village_idiot_brewing_company__mount_holly,"Mount Holly","Burlington County","New Jersey",08060-1702,,,nj,2026-09-01,
+433390a077263607ed7030cfb2206e41,zeds_beer_bado_brewing__marlton,Marlton,"Burlington County","New Jersey",08053-3007,,,nj,2026-09-01,
+96135dc8868b0135c272bc23ee274502,berlin_brewing_company__berlin,Berlin,"Camden County","New Jersey",08009-1902,,,nj,2026-09-01,
+2eaef1a47a3c8f9fc72f086f3ad48a27,double_nickel_brewing_company__pennsauken,Pennsauken,"Camden County","New Jersey",08110-1330,,,nj,2026-09-01,
+01f477065eb6a5438ef233dee4856ca4,eclipse_brewing__merchantville,Merchantville,"Camden County","New Jersey",08109-2607,,,nj,2026-09-01,
+925302aa1f2cb61f58f75abf8f3a36d2,mechanical_brewery__cherry_hill,"Cherry Hill","Camden County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+3fff880ac6a451f1bcfc9fddb807d833,tanner_brewing_company__haddon_heights,"Haddon Heights","Camden County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+3fdb93f6f8621f66f3094bb33fb146ce,the_raccoon_taproom_swedesboro_brewing__collingswood,Collingswood,"Camden County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+d93668281d16e2f159854fb1d8ce98f0,whims_brewing__atco,Atco,"Camden County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+057ad0d7a85c74e601ef3d9cd8d3b22e,anglesea_aleworks__wildwood,Wildwood,"Cape May County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+5ef517a27200f7d01693443be23daca6,avalon_brew_pub__avalon,Avalon,"Cape May County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+4a52f26eb97a7eb579b8be8f47fddbf1,behr_brewing__cape_may,"Cape May","Cape May County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17); name corrected to the brewery's own"
+1b7c76e224fb803fc04c2ccd7caa94a7,cape_may_brewing_company_rio_grande__rio_grande,"Rio Grande","Cape May County","New Jersey",08242-2210,,,nj,2026-09-01,"duplicate record 'Cape May Brewing Company, Cape May' folded in: Cape May Brewing Company, Rio Grande (single location, 1250 Hornet Rd)"
+029c85c5068448b1c00fbccdedbe76be,cold_spring_brewery__cape_may,"Cape May","Cape May County","New Jersey",08204-4634,,,nj,2026-09-01,
+8afd989dacd80c4507e187d54f896324,gusto_brewing_co__north_cape_may,"North Cape May","Cape May County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+b98aacaf262c438d9f8fcb4f8efa5a77,meyers_lighthouse_brewing__ocean_view,"Ocean View","Cape May County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+2a704c71aeef5dafef099eab21bab847,mudhen_brewing_company__wildwood,Wildwood,"Cape May County","New Jersey",08260,,,nj,2026-09-01,
+e61c6e9c6a7857ef7419115a5fb95fd4,obscura_brewing_co__cape_may_court_house,"Cape May Court House","Cape May County","New Jersey",,,,nj,2026-09-23,"successor to Bucket Brigade Brewery (closed 2025-01-26), same site, rebranded by owner's son; website not found"
+cae78730346cb7d1af529edd967a36d5,slack_tide_brewing_company__cape_may_court_house,"Cape May Court House","Cape May County","New Jersey",08210-1200,,,nj,2026-09-01,
+5359b017cc0293c8ed4e90a13a48c4f2,whale_tale_brewing_company__cape_may_court_house,"Cape May Court House","Cape May County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+7022ae6b5657863e313ef810757711b7,glasstown_brewing__millville,Millville,"Cumberland County","New Jersey",08332-4818,,,nj,2026-09-01,
+989bbd8618594c457f6c81d479266194,wander_back_beerworks__vineland,Vineland,"Cumberland County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+fa91d5aa35cb665a3014163fcce08b86,cricket_hill_brewing_co_inc__fairfield,Fairfield,"Essex County","New Jersey",07004-3308,,,nj,2026-09-01,
+5233522520edc3162adb69342679c732,gaslight_brewery_and_restaurant__south_orange,"South Orange","Essex County","New Jersey",07079-1716,,,nj,2026-09-01,
+ec1091157b8990f0914e26e0a8fa38ab,montclair_brewery__montclair,Montclair,"Essex County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+e7da0648c70dabcc75e29b964a2be023,newark_local_beer__newark,Newark,"Essex County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+e21217d9b5e8bdde9d0f9a3410957da3,pallet_brewing_company__maplewood,Maplewood,"Essex County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+8bdff256b652917ee46d4d019ba4bbad,soma_brewing__maplewood,Maplewood,"Essex County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+a16abc2b9c4de965e3ed7d13f1649c75,varitage_brew_works__bloomfield,Bloomfield,"Essex County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+10ce59514e91e4f062e417daa6e5e7ef,13th_child_brewing__williamstown,Williamstown,"Gloucester County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+3140c8e8fe88abc72f6d090c586bdcbe,axe_and_arrow_brewing__glassboro,Glassboro,"Gloucester County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+69d1459679f4fdf0018d8c3dd3c09f02,bonesaw_brewing_co__glassboro,Glassboro,"Gloucester County","New Jersey",08028,,,nj,2026-09-01,
+b78cfcbe266a8505a78c09ed8dabbfd3,bonesaw_pilot_house__deptford,Deptford,"Gloucester County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+cac807f38b37fc5fd5437b84b7c8732d,core3brewery__clayton,Clayton,"Gloucester County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+da5b373d5f65b79bce6805c7868213ce,death_of_the_fox__clarksboro,Clarksboro,"Gloucester County","New Jersey",08020-1161,,,nj,2026-09-01,
+94011861587d20cea16c294095078efc,neck_of_the_woods_brewing__pitman,Pitman,"Gloucester County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+4a4ae546c3f1b70616ec984f07214881,sons_of_barley_beer_co__woodbury_heights,"Woodbury Heights","Gloucester County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+655f1a99028376e9fb380d2381e97b9e,swedesboro_brewing_company__swedesboro,Swedesboro,"Gloucester County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+05f947e675d3b22eaa0b15490f1991bc,westville_brewery__westville,Westville,"Gloucester County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+ba167d95239ce8b18342c53979d1d057,902_brewing__jersey_city,"Jersey City","Hudson County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+9c14b0e37103cf16130f7c72fe59a864,departed_soles_brewing__jersey_city,"Jersey City","Hudson County","New Jersey",07302-2900,,,nj,2026-09-01,
+238e029062325eea6a3d2576c2f03f00,hoboken_brewing_company__hoboken,Hoboken,"Hudson County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+d72b96b306670e0b042334cdd99f4fd6,new_jersey_beer_co__north_bergen,"North Bergen","Hudson County","New Jersey",07047-2430,,,nj,2026-09-01,
+442d83bab6551495e1797b1704987526,conclave_brewing__flemington,Flemington,"Hunterdon County","New Jersey",08822-5750,,,nj,2026-09-01,"NJCB lists Raritan Township; same Minneakoning Rd trade center as the Flemington address"
+0fd1f5b0bc4fed49108d64cdb65fc1c9,descendants_brewing_company__milford,Milford,"Hunterdon County","New Jersey",08848-1264,,,nj,2026-09-01,"NJCB still lists this Milford brewpub under its former name, The Ship Inn Restaurant & Brewery"
+a7683fd748a827abe0f02c6b9cf0fc75,esker_hart_artisan_ales__high_bridge,"High Bridge","Hunterdon County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17); directory spells it 'Eskar Hart', brewery's own spelling is 'Esker Hart'"
+f1d4058435813e9e0875f41257ee41ef,lone_eagle_brewing__flemington,Flemington,"Hunterdon County","New Jersey",08822-1581,,,nj,2026-09-01,
+c05101022e517fdbd11969df885940cb,odd_bird_brewing__stockton,Stockton,"Hunterdon County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+8ae7544f1a345b7e88f8ede5557e6a3f,opportunity_brewing_company__flemington,Flemington,"Hunterdon County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17); production brewery with no tasting room"
+93565da0a1bca0414eaa8fc9e3a0ba75,readington_brewery_and_hop_farm__readington,Readington,"Hunterdon County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17); postal town is Neshanic Station"
+913af1dd8740804361b85b375271a4ef,sunken_silo_brew_works__lebanon,Lebanon,"Hunterdon County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+4d5c7d2b7d9fe8d1252de05152df9476,wild_fern_brewing__frenchtown,Frenchtown,"Hunterdon County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+f89f41446a3613b5e69b0f92e7df8cd3,bent_iron_brewing_company__hamilton,Hamilton,"Mercer County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+1c7c72ecd4067b8169cd3138b56e84f9,needle_creek_farm_brewery_company__pennington,Pennington,"Mercer County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+044e518efe3c58cd547104d946f88854,old_hights_brewing_company__hightstown,Hightstown,"Mercer County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+70ac397b6d9026c06d55f451137ad807,river_horse_brewing_company__ewing,Ewing,"Mercer County","New Jersey",08628-1546,,,nj,2026-09-01,
+fa1481cc6743d35b7aaba5fade4301a9,the_druery__lawrenceville,Lawrenceville,"Mercer County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+246bb70355dc5d3b8a4de934aa157687,troon_brewing__hopewell,Hopewell,"Mercer County","New Jersey",08525-3111,"Hunterdon County; Somerset County",,nj,2026-09-01,
+3fd25558cf1532cf89ca1d47d2ff321f,cypress_brewing_company__edison,Edison,"Middlesex County","New Jersey",08837-3844,,,nj,2026-09-01,"UNRESOLVED: NJCB lists it closed June 2026; a second source (Yelp, Aug 2026) does not mark it closed; kept pending confirmation"
+6c71690908001491d0993d7e4ae0ddef,harvest_moon_brewery_cafe__new_brunswick,"New Brunswick","Middlesex County","New Jersey",08901-2018,,,nj,2026-09-01,
+e52cb85de1ca6ab63a28c1c3d4dde5f8,the_hidden_brewery__middlesex,Middlesex,"Middlesex County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17); opened in the former Ashton Brewing space"
+e8194c5623bcec595505f0d48e459613,alternate_ending_beer_co__aberdeen,Aberdeen,"Monmouth County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+a42e9bdc828cefc46319f814d9446aa1,asbury_park_brewery__asbury_park,"Asbury Park","Monmouth County","New Jersey",07712-6527,,,nj,2026-09-01,
+261975a4da4526a6017f4097ee6adb8f,bakes_brewing_company__wall,Wall,"Monmouth County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17); name corrected to the brewery's own"
+912ee6189cf43480f397345b14ca7840,beach_haus_brewery__belmar,Belmar,"Monmouth County","New Jersey",07719-2705,,,nj,2026-09-01,
+da8a3e7d2815b1b75997a4330d3a4151,belford_brewing_company__belford,Belford,"Monmouth County","New Jersey",07718-1144,,,nj,2026-09-01,
+9ede7c4f93779598a4151763eb14d2d5,birdsmouth_beer__oceanport,Oceanport,"Monmouth County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+fbab9ee42c5b182c7f2ad8c52f0425b8,carton_brewing_co__atlantic_highlands,"Atlantic Highlands","Monmouth County","New Jersey",07716-1230,,,nj,2026-09-01,
+7b22760af18c653e6d064e7bf98ae2bc,erratic_fermentations__bradley_beach,"Bradley Beach","Monmouth County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+ba6f48b2df873291a041757f9969add4,kane_brewing__ocean,Ocean,"Monmouth County","New Jersey",07712-3941,,,nj,2026-09-01,
+a8261adb7e571aaad7940af16994393c,little_dog_brewing_co__neptune_city,"Neptune City","Monmouth County","New Jersey",07753-6500,,,nj,2026-09-01,
+13b87d4f66f2d8ec24383bd4004aeaef,screamin_hill_brewery__cream_ridge,"Cream Ridge","Monmouth County","New Jersey",08514-1617,"Ocean County",,nj,2026-09-01,
+2c4f64ddcb9835021cf2ab62bc8ff7c0,seven_sons_brewery__howell,Howell,"Monmouth County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+2931388e77f5eb65efc29796e30de61f,skinny_flowers_brewing__oceanport,Oceanport,"Monmouth County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+669f0c84ddc04136467c7ee4b271ecf8,source_brewing_company__colts_neck,"Colts Neck","Monmouth County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+d2188b8a8b7ece669610316cc61e149c,tall_oaks_farm_brewery__farmingdale,Farmingdale,"Monmouth County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+c4e36b23853262eacaf9006564648254,triumph_brewing_company__red_bank,"Red Bank","Monmouth County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+01e24316a760a3f51a34f6bd428ed8fa,twin_lights_brewing__tinton_falls,"Tinton Falls","Monmouth County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+c9d55dd98994820e56907ce29ce5db64,wild_air_beerworks__asbury_park,"Asbury Park","Monmouth County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+a7d946ba499b97e97f9f3f13cae46348,autodidact_beer__morris_plains,"Morris Plains","Morris County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+f05972666369c32ae69c4f4854cb5a8a,chilton_mill_brewing__long_valley,"Long Valley","Morris County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+5c5af33d64d13a77e734e0e436ec2646,diamond_spring_brewing_company__denville,Denville,"Morris County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+2bab97c33a6fa32506177daddf41cfe6,double_tap_brewing__whippany,Whippany,"Morris County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+88de6d977f12eb880833b5a8f9c4a3d1,fort_nonsense__randolph,Randolph,"Morris County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+3a0fa56f3f272b6515bda82eb1feb387,glenbrook_brewery__morristown,Morristown,"Morris County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+8870c1510a5968cf65b0600fdb9ce539,high_point_brewing_co_inc__butler,Butler,"Morris County","New Jersey",07405-1377,,,nj,2026-09-01,
+eda7017eb85c6f60c9fdf1c1f0f6e7ce,long_valley_pub_and_brewery__long_valley,"Long Valley","Morris County","New Jersey",07853,,,nj,2026-09-01,
+681220490700e5888d5e67d5cda4f261,oakflower_brewing_company__millington,Millington,"Morris County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+6489994734aadac26065eadc4b0860a2,the_rosecourt_brewery__madison,Madison,"Morris County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+cd670a2a8426712a08ee77c42a798634,twin_elephant_brewing_company__chatham,Chatham,"Morris County","New Jersey",07928-2759,,,nj,2026-09-01,
+c362c3fc10b43c22c39bb725102e7b73,artisans_brewery_italian_grill__toms_river,"Toms River","Ocean County","New Jersey",08753-8305,,,nj,2026-09-01,
+475a1bde1dae68dfaee704982144e8ec,battle_river_brewing__toms_river,"Toms River","Ocean County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+b843e5700800085b81c5d2ab3a0f6bb3,bent_elbow_brewery__west_creek,"West Creek","Ocean County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+dc7c53002fd15b8004e997ba37976054,booterbeer_brewing_company__new_egypt,"New Egypt","Ocean County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+e3f122bd9ebc2bbc92ad30b0cbc10a58,heavy_reel_brewing__seaside_heights,"Seaside Heights","Ocean County","New Jersey",08751,,,nj,2026-09-01,
+b6ed969623ac885860901e243a501c4d,last_wave_brewing_co__point_pleasant_beach,"Point Pleasant Beach","Ocean County","New Jersey",08742-2536,,,nj,2026-09-01,
+27afd44905522cb552959a9d33b3800a,leaning_fathers_brewing__brick,Brick,"Ocean County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+d07202bc8492110f360d3fdd6bfff8fc,lokal_brewing__point_pleasant,"Point Pleasant","Ocean County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+4bd078e79e4b29db1d561f4a83964b3a,manafirkin__manahawkin,Manahawkin,"Ocean County","New Jersey",08050,,,nj,2026-09-01,
+ed3aca9c716e0cb5e78cdda8319755da,oyster_creek_brewing_company__waretown,Waretown,"Ocean County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+a0131b2e853310a5f996122ece4031f1,pinelands_brewing__little_egg_harbor_twp,"Little Egg Harbor Twp","Ocean County","New Jersey",08087-4259,"Burlington County",,nj,2026-09-01,
+801dd018b7f8b3412b14b76b8f6a0434,ship_bottom_brewery__beach_haven,"Beach Haven","Ocean County","New Jersey",08008-2053,,,nj,2026-09-01,
+6f30a4093718b6c88e6999d94ded19c4,ghost_hawk_brewing_co__clifton,Clifton,"Passaic County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+f054c5151115429fbc927581635365e8,seven_tribesmen_brewery__wayne,Wayne,"Passaic County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+a5c17bf2edba8d0e2f5ad567a14fd00c,bullhide_brewery__pilesgrove,Pilesgrove,"Salem County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+8239e30efb8da1a64e02f25587154d22,farmers_and_bankers_brewing__woodstown,Woodstown,"Salem County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+34df05fd7c31b554cb98169ddaaccfc3,lost_elephant_brewing_company__elmer,Elmer,"Salem County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+0790e486d949c7d756faf5220aebe788,brooks_brewery_at_northside_lounge__manville,Manville,"Somerset County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17); listed as temporarily closed"
+d90d16b530a58b1d6f7021470b4f192f,flounder_brewing_co__hillsborough,Hillsborough,"Somerset County","New Jersey",08844-1916,,,nj,2026-09-01,
+9f07c82262e155ae5c386948dcdf8abc,village_brewing_company__somerville,Somerville,"Somerset County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+c6689b54fa92781139b7fd539834582e,kroghs_restaurant_and_brewpub__sparta,Sparta,"Sussex County","New Jersey",07871-1823,,,nj,2026-09-01,
+a97808f3871a8dea390caa0dd6eccba2,twin_soles_brewing__augusta,Augusta,"Sussex County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+7a2f9b36973e63190c6c84127e924300,vernon_brewing_formerly_alias_brew_works__vernon,Vernon,"Sussex County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17); website is still the aliasbrewworks.com domain"
+06306388045b9dca15d6f662474df784,bull_n_bear_brewery__summit,Summit,"Union County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17); an older BeerAdvocate thread reports an ABC shutdown, but 2026 listings show it operating"
+4645e2f92156fbadf34e26eea5aa7d0c,climax_brewing_co__roselle_park,"Roselle Park","Union County","New Jersey",07204-1402,,,nj,2026-09-01,
+9bde6587997044b916fabe7e98dbfc99,lions_roar_brewing__westfield,Westfield,"Union County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+73512abcb2e562c6669d52a33dcd1cc3,trap_rock_restaurant_and_brewery__berkeley_heights,"Berkeley Heights","Union County","New Jersey",07922-1214,,,nj,2026-09-01,
+fd554a98ced3e07d5a8d24d1a611ef92,two_ton_brewing__kenilworth,Kenilworth,"Union County","New Jersey",07033,,,nj,2026-09-01,
+4ace62ab07d523b4228930f0fc490afc,untied_brewing_company__new_providence,"New Providence","Union County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+040c7f19deaf3daa16f942c24afca527,wet_ticket_brewing__rahway,Rahway,"Union County","New Jersey",07065-,,,nj,2026-09-01,
+eea26a2a94ee36746577c9f126121337,yale_terrace_brewing__cranford,Cranford,"Union County","New Jersey",,,,nj,2026-09-23,"added from NJCB directory (newjerseycraftbeer.com/new-jersey-breweries/, page updated 2026-08-17)"
+cfd0e885c1ea26519ddfb510563a2c65,buck_hill_brewery_and_restaurant__blairstown,Blairstown,"Warren County","New Jersey",07825,"Sussex County",,nj,2026-09-01,
+411c1341ca83834cb87d5bd9c3c26d4f,czig_meister_brewing_co__hackettstown,Hackettstown,"Warren County","New Jersey",07840-2156,"Morris County",,nj,2026-09-01,
+b09197f3150a19eb5dc27e2b17e99efb,jersey_girl_brewing_company__hackettstown,Hackettstown,"Warren County","New Jersey",07840-5535,"Morris County",,nj,2026-09-01,
+7dd9275a707984f92f663c2d565dd5d0,man_skirt_brewing__hackettstown,Hackettstown,"Warren County","New Jersey",07840-1930,"Morris County",,nj,2026-09-01,
+3c2e7c12e02d4317df80b35659558ca0,blue_earl_brewing_company__smyrna,Smyrna,"Kent County",Delaware,19977-3715,"New Castle County","included on ZIP overlap: primary county Kent County, ZIP also overlaps New Castle County",border,,
+b508c573b27cab8d9d07fd452de21e9c,brick_works_brewing_and_eats__smyrna,Smyrna,"Kent County",Delaware,19977-1573,"New Castle County","included on ZIP overlap: primary county Kent County, ZIP also overlaps New Castle County",border,,
+c4021c79e7ba42f6b3e14321778e5f7b,argilla_brewing_co_pietros_pizza__newark,Newark,"New Castle County",Delaware,19711-7242,,,border,,
+45916db7761b0f1689be860d3eaa8231,bellefonte_brewing_co__wilmington,Wilmington,"New Castle County",Delaware,19808-6043,,,border,,
+7fd7eccfead688455387c7d34d62cd48,dew_point_brewing__yorklyn,Yorklyn,"New Castle County",Delaware,19736-,,,border,,
+d837af92bcfa7162dfef3d13e39a72d1,midnight_oil_brewing__newark,Newark,"New Castle County",Delaware,19702,,,border,,
+bf9dec1ecbeaa4f35a94f4a1b26db5e7,midnight_oil_brewing_company__newark,Newark,"New Castle County",Delaware,19702-3348,,,border,,
+34c75d63ba8ed0f99a209f8e08540748,pizza_by_elizabeths__greenville,Greenville,"New Castle County",Delaware,19807-2321,,,border,,
+d8aa20004b13a1dcaa299c58e9134ce6,stewarts_brewing_co__bear,Bear,"New Castle County",Delaware,19701-3026,,,border,,
+366c135040f123431b77b4efd687d8de,stitch_house_brewery__wilmington,Wilmington,"New Castle County",Delaware,19801,,,border,,
+34cf440ca21fa3a60caa033e3bd57bf5,twin_lakes_brewing_co__wilmington,Wilmington,"New Castle County",Delaware,19804-2445,,,border,,
+c9f7d59bf3b18e04b324cdd93623a7a2,volunteer_brewing_company__middletown,Middletown,"New Castle County",Delaware,19709-1040,,,border,,
+f07492e1ead8dc786c7f2a46e54af927,roscoe_brewing_company__roscoe,Roscoe,"Delaware County","New York",12776-6418,"Sullivan County","included on ZIP overlap: primary county Delaware County, ZIP also overlaps Sullivan County",border,,
+bd61cb4804334b03af02a04fbce5c432,clemson_bros_brewery__middletown,Middletown,"Orange County","New York",10940-5059,"Sullivan County",,border,,
+308569e172ff0e63670af44e3be1698b,equilibrium_brewery__middletown,Middletown,"Orange County","New York",10940,"Sullivan County",,border,,
+bcf653ef9b5dbb0b88034bf560c7bd4e,fox_n_hare_brewing_company__port_jervis,"Port Jervis","Orange County","New York",12771-2415,,,border,,
+a8550a421c0f41c20473d81e158fdd51,glenmere_brewing_co_inc__florida,Florida,"Orange County","New York",10921-1124,,,border,,
+4c5b18715fadbf90cca10e157868cc66,long_lot_farm_brewery__chester,Chester,"Orange County","New York",10918,,,border,,
+24b7d5abdb429af52604abd6796fd814,newburgh_brewing_company__newburgh,Newburgh,"Orange County","New York",12550-5640,,,border,,
+7c1b5528d542fe9ad2fae0d02f201c2b,pine_island_brewing__pine_island,"Pine Island","Orange County","New York",10969-1715,,,border,,
+7a7237a73463e08a8d06bec289445b18,rushing_duck_brewing_co__chester,Chester,"Orange County","New York",10918-1283,,,border,,
+d29477d3e7becc0f1341b7afa7ef20b6,westtown_brew_works__westtown,Westtown,"Orange County","New York",10998-,,,border,,
+23ea4bfd1103a987faff3a5e4e81daa8,andean_brewing__blauvelt,Blauvelt,"Rockland County","New York",10913-1162,,,border,,
+6c6508a742459d9c180df778fe4f53f2,defiant_brewing_co__pearl_river,"Pearl River","Rockland County","New York",10965-2360,,,border,,
+7705f927d6bdce07ee964bfc4fff695a,district_96_beer_factory__new_city,"New City","Rockland County","New York",10956,,,border,,
+9cb812a2608a411f38a977a308c19c94,gentle_giant_brewing_company__pearl_river,"Pearl River","Rockland County","New York",10965-2318,,,border,,
+7c96902a69c02d082a5488a8a6f3d034,industrial_arts_brewing_co__garnerville,Garnerville,"Rockland County","New York",10923-1261,,,border,,
+a614ba2f95b41e5bf71c84535da72ee7,catskill_brewery__livingston_manor,"Livingston Manor","Sullivan County","New York",12758-0033,"Ulster County; Delaware County",,border,,
+8c3c81692b8812af917c3e2681852c6b,shrewd_fox_brewery__eldred,Eldred,"Sullivan County","New York",12732,,,border,,
+fd4773c6d9cb3bce509bbea27f646ea4,broken_goblet_brewing__bristol,Bristol,"Bucks County",Pennsylvania,19007-1521,,,border,,
+8ab24588a187c44cc598059d67112a87,bucks_county_brewery__pipersville,Pipersville,"Bucks County",Pennsylvania,18947-1083,,,border,,
+004183b9399e352fc46f53526b6111de,free_will_brewing_company__perkasie,Perkasie,"Bucks County",Pennsylvania,18944-1683,,,border,,
+d5d841819032e78cc71dd9e2dff3cd94,great_barn_brewery__new_hope,"New Hope","Bucks County",Pennsylvania,18938,,,border,,
+b7e246a7938d24ced56131f64bd3354b,mad_princes_brewing__buckingham,Buckingham,"Bucks County",Pennsylvania,18902,,,border,,
+dd90a9af8dc488ca08e4c1e25b15a15d,neshaminy_creek_brewing_co__croydon,Croydon,"Bucks County",Pennsylvania,19021-7510,,,border,,
+ce356c1cdabdba7a1667f5ec1848ec2e,the_proper_brewing_company__quakertown,Quakertown,"Bucks County",Pennsylvania,18951-1200,"Lehigh County",,border,,
+082d05b3aadfe07d623c1b185e84aeed,towerhill_brewery__chalfont,Chalfont,"Bucks County",Pennsylvania,18914-3020,"Montgomery County",,border,,
+d96ba53db38e3d8562383c454815ce82,vault_brewing_co__morrisville,Morrisville,"Bucks County",Pennsylvania,19067-1511,,,border,,
+adb497ec1145f8bf25b344b8398db658,taylor_house_brewing_co__catasauqua,Catasauqua,"Lehigh County",Pennsylvania,18032,"Northampton County","included on ZIP overlap: primary county Lehigh County, ZIP also overlaps Northampton County",border,,
+9f8db934d5ec5d189d541f9b2eb80ecd,barley_creek_brewing_co__tannersville,Tannersville,"Monroe County",Pennsylvania,18372-7893,,,border,,
+407d1001e18a493423931d92c0058771,pocono_brewery_company__swiftwater,Swiftwater,"Monroe County",Pennsylvania,18370-7773,,,border,,
+7dd983751973cb87b3f07e634c8e3ac1,shawnee_craft_brewery__shawnee_on_delaware,"Shawnee on Delaware","Monroe County",Pennsylvania,18356,,,border,,
+e02a69c15de51957bd0f09e7c273e3f8,crooked_eye_brewery__hatboro,Hatboro,"Montgomery County",Pennsylvania,19040-2618,"Bucks County","included on ZIP overlap: primary county Montgomery County, ZIP also overlaps Bucks County",border,,
+03cb8cb44917efa78fe22f12d7d4f0f0,imprint_beer_company__hatfield,Hatfield,"Montgomery County",Pennsylvania,19440-3271,"Bucks County","included on ZIP overlap: primary county Montgomery County, ZIP also overlaps Bucks County",border,,
+e6e308b1f4c0000b3edb3f2176fb6718,moss_mill_brewing__huntingdon_valley,"Huntingdon Valley","Montgomery County",Pennsylvania,19006-1630,"Bucks County","included on ZIP overlap: primary county Montgomery County, ZIP also overlaps Bucks County",border,,
+4856d231129482b0b206153a276d198b,naked_brewing_co__huntingdon_valley,"Huntingdon Valley","Montgomery County",Pennsylvania,19006-1501,"Bucks County","included on ZIP overlap: primary county Montgomery County, ZIP also overlaps Bucks County",border,,
+bbbba6a00ae3a2498d4e995732cec547,perkiomen_valley_brewery__green_lane,"Green Lane","Montgomery County",Pennsylvania,18054,"Bucks County","included on ZIP overlap: primary county Montgomery County, ZIP also overlaps Bucks County",border,,
+a50fea61a05c9d9b7b68cf1dfd26ced9,bangor_trust_brewing__bangor,Bangor,"Northampton County",Pennsylvania,18013-2601,,,border,,
+cbb55ea2f67b25cef5e6fe9cbfbf948c,birthright_brewing_co__nazareth,Nazareth,"Northampton County",Pennsylvania,18064-2037,,,border,,
+569d5211385db33616c295820cb192ba,bonn_place_brewing__bethlehem,Bethlehem,"Northampton County",Pennsylvania,18015,"Lehigh County",,border,,
+928cba5ddcfcc233e2b71c56e9aa8d9e,cave_brewing_co__bethlehem,Bethlehem,"Northampton County",Pennsylvania,18015-4219,"Lehigh County",,border,,
+167ea1e719943708708e84873161bd82,hop_hill_brewing_company__bethlehem,Bethlehem,"Northampton County",Pennsylvania,18015-5307,"Lehigh County",,border,,
+8fb5b2450c67f99da1028974dbc17658,lost_tavern_brewing__hellertown,Hellertown,"Northampton County",Pennsylvania,18055-1540,"Bucks County",,border,,
+5928bee1c619b967760a52ac9e618e6e,the_brewery_b_ser_geist_brewing_co_llc__easton,Easton,"Northampton County",Pennsylvania,18042-1474,"Bucks County",,border,,
+748f9ba1ea62f10f2a54e855e22e62f4,two_rivers_brewing_co__easton,Easton,"Northampton County",Pennsylvania,18042-3517,"Bucks County",,border,,
+38a5d3736ba04ce336a962ba973ff08e,weyerbacher_brewing_co__easton,Easton,"Northampton County",Pennsylvania,18042-7379,"Bucks County",,border,,
+6c32cc0e8311ca9d2373ef3155f5e627,wallenpaupack_brewing_company__hawley,Hawley,"Pike County",Pennsylvania,18428-1500,"Wayne County",,border,,
+6c05ef83ce276e2b8aa6c176b540482a,jam_room_brewing_co__newfoundland,Newfoundland,"Wayne County",Pennsylvania,18445-5210,"Pike County","included on ZIP overlap: primary county Wayne County, ZIP also overlaps Pike County",border,,
+42478ef1c1234037a7936fa497de7ca3,tomfoolery_brewing__hammonton,Hammonton,"Atlantic County","New Jersey",,,,,,
+d96b53d99a6799ca8f8d854c3c1c17dc,tuckahoe_brewing_co__egg_harbor_township,"Egg Harbor Township","Atlantic County","New Jersey",,,,,,
+195110e120efebc6d39ba25531a4bcae,vinyl_brewing_company_llc__hammonton,Hammonton,"Atlantic County","New Jersey",,,,,,
+24b2ff2147cbb337af1b1aa1a874ac96,the_alementary__hackensack,Hackensack,"Bergen County","New Jersey",,,,,,
+c8de8cac0303e2cf8e59bf8f232aca65,common_sense_brewing__bordentown,Bordentown,"Burlington County","New Jersey",,,,,,
+85f398a72533c9a5e9fe13c33d1b2dbb,iron_hill_brewery_restaurant_maple_shade__maple_shade,"Maple Shade","Burlington County","New Jersey",,,,,,
+924ecc3f7d8b57195f746bcedcd01557,nale_house_brewing_co__medford,Medford,"Burlington County","New Jersey",,,,,,
+dbb4e0ef25de304e2b260cfaaecde918,atco_brewing_llc__atco,Atco,"Camden County","New Jersey",,,,,,
+2eb1aa54372de5aad75800aed60a6732,devils_creek_brewery__collingswood,Collingswood,"Camden County","New Jersey",,,,,,"superseded_by: Raccoon Taproom (Swedesboro Brewing), Collingswood, opened 2024-06-01 at this site"
+59dd92a559296a0ab8f5a9d88e2df485,flying_fish_brewing_co__somerdale,Somerdale,"Camden County","New Jersey",,,,,,
+73aaef60707fb22251f6f38e271060e8,forgotten_boardwalk_brewing__cherry_hill,"Cherry Hill","Camden County","New Jersey",,,,,,
+8bf493e50b7002785069739b92cc5bb5,iron_hill_brewery_restaurant_voorhees__voorhees,Voorhees,"Camden County","New Jersey",,,,,,
+d92fb2471c744fabe4c3624b98b763d8,lunacy_brewing_company__haddon_heights,"Haddon Heights","Camden County","New Jersey",,,,,,
+6df76feb519b87b868c41ee40c26846d,7_mile_brewery__rio_grande,"Rio Grande","Cape May County","New Jersey",,,,,,
+2464040fa759af7db164f910c3fedf23,bucket_brigade_brewery__cape_may_court_house,"Cape May Court House","Cape May County","New Jersey",,,,,,"superseded_by: Obscura Brewing Co, same site, rebranded by the owner's son"
+dcde9d49402fa87d9f7a3c3ebbf64187,brinx_jones_brewery__vineland,Vineland,"Cumberland County","New Jersey",,,,,,
+38f7756f4f4e9718b6ea5cdb0b973877,anheuser_busch_inc_newark__newark,Newark,"Essex County","New Jersey",,,,,,
+2de6ace7f638e96ea99eec507d952c72,eight_sand_beer_co__woodbury,Woodbury,"Gloucester County","New Jersey",,,,,,"superseded_by: Freckled Jawn Brewing (opening expected October 2026, not yet open)"
+d490e90cd739eb6233d589c6a5c547c8,human_village_brewing_co__pitman,Pitman,"Gloucester County","New Jersey",,,,,,
+0dbbbc151bcb39f769a3580011bf9781,kelly_green_brewing_co__pitman,Pitman,"Gloucester County","New Jersey",,,,,,
+0cd5c957b3a82b6b112494e1753b164c,demented_brewing_co__middlesex,Middlesex,"Middlesex County","New Jersey",,,,,,"superseded_by: The Hidden Brewery later opened in Middlesex NJ (different site history: former Ashton Brewing)"
+5235cd5e64dd78d94e2118ed402f5829,j_j_bitting_brewing_co__woodbridge,Woodbridge,"Middlesex County","New Jersey",,,,,,
+68e5cb38802b84aa236a74ff3c785974,birravino__red_bank,"Red Bank","Monmouth County","New Jersey",,,,,,
+1aea94f96282d8b8388a3729001d3abb,bradley_brew_project__bradley_beach,"Bradley Beach","Monmouth County","New Jersey",,,,,,"superseded_by: Brand continues, brewed at Tall Oaks Farm + Brewery, Farmingdale; Erratic Fermentations took the Bradley Beach space"
+f5128d5a5fe4113fe8030fe1866ff9db,dark_city_brewing_company__asbury_park,"Asbury Park","Monmouth County","New Jersey",,,,,,
+73c23a951c58511e7537e3f613716894,jughandle_brewing_co_llc__tinton_falls,"Tinton Falls","Monmouth County","New Jersey",,,,,,"superseded_by: Twin Lights Brewing now occupies this Tinton Falls location"
+6f9398126b7300b494d35213ed8c0701,raritan_bay_brewing_llc__keansburg,Keansburg,"Monmouth County","New Jersey",,,,,,
+4aa63acd4aba8b7f30ee6b7a20f7b764,backward_flag_brewing__forked_river,"Forked River","Ocean County","New Jersey",,,,,,
+a9fafc889c493b30f5eabd1092952ed2,frye_brewing__point_pleasant_boro,"Point Pleasant Boro","Ocean County","New Jersey",,,,,,"superseded_by: Lokal Brewing Co (opened October 2025) at 2257 Bridge Ave"
+c5c65f6fee68e5e3cd183e1fd9e65e50,the_referend_bier_blendery__pennington,Pennington,"Mercer County","New Jersey",,,,,,"superseded_by: The Referend Bier Blendery, Kutztown, PA"

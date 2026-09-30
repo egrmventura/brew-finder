@@ -10,22 +10,27 @@ Interim research format for brewery/newsletter-target tracking, pending the real
 Four files, decomposed by grain (see `dimensional-grain` skill for why a flat
 "one row per destination" table collapses distinct grains):
 
-- `dim_brewer.csv` — one row per brewer identity **version**. SCD2: a rename
-  produces a new `brewer_sk` under the same `brewer_natural_key`; a pure
-  relocation does not (the brewer's own attributes didn't change).
-- `dim_location.csv` — one row per physical premises the brewer research has
-  identified. Grain note: with no street-address or OSM-id data available yet,
-  `location_natural_key` is scoped to `<brewer_natural_key>__<city-slug>`, not a
-  true premises identity — see **Known limitation** below.
-- `bridge_brewer_location.csv` — one row per continuous occupancy interval:
-  `brewer_sk` × `location_sk` × `[effective_from, effective_to)`. No-overlap is
-  the correctness rule here, not no-gaps — a closed-then-reopened site has a
+- `dim_brewer.csv` — Grain: one row per brewer (`brewer_natural_key`) per identity version, unique on (`brewer_natural_key`, `effective_from`).
+  SCD2: a rename produces a new `brewer_sk` under the same
+  `brewer_natural_key`; a pure relocation does not (the brewer's own
+  attributes didn't change).
+- `dim_location.csv` — Grain: one row per brewer (`brewer_natural_key`) per site, unique on `location_natural_key`.
+  A site is a physical premises as far as the research can tell premises
+  apart. With no street-address or OSM-id data available yet,
+  `location_natural_key` is `<brewer_natural_key>__<city-slug>`, not a true
+  premises identity, plus a suffix where one brewer has two sites in one city
+  (`rinn_duin_brewing__toms_river__pre_rename` / `__post_rename`) — see
+  **Known limitations** below.
+- `bridge_brewer_location.csv` — Grain: one row per brewer version (`brewer_sk`) per location (`location_sk`) per continuous occupancy interval, unique on (`brewer_sk`, `location_sk`, `effective_from`).
+  The interval is `[effective_from, effective_to)`. No-overlap is the
+  correctness rule here, not no-gaps — a closed-then-reopened site has a
   legitimate gap.
-- `fact_newsletter_target.csv` — one row per currently-tracked brewer
-  (`brewer_sk`), brand-level per the diagnosis that a mailing list is a brand
-  relationship, not a location one. Only brewers sourced from an active
-  newsletter-target row get a fact row; a brewer known only from a historical
-  closure record has no `added_date` evidence and gets none.
+- `fact_newsletter_target.csv` — Grain: one row per brewer (`brewer_natural_key`) on the newsletter-target list, unique on `brewer_natural_key`.
+  Brand-level, per the diagnosis that a mailing list is a brand relationship,
+  not a location one; the row references the brewer through `brewer_sk`.
+  Only brewers sourced from an active newsletter-target row get a fact row; a
+  brewer known only from a historical closure record has no `added_date`
+  evidence and gets none.
 
 ## Where each source field went
 
@@ -52,10 +57,25 @@ column exists here, and none may be added with guessed values.
 
 ## The 5 rules
 
-1. **`brewer_sk` has a minimum of 8 digits on the end**, to allow for
-   expansion. Format: `bwr_` + zero-padded 8-digit sequence, e.g. `bwr_00000001`.
-2. **`location_sk` has a minimum of 8 digits on the end**, same reason and
-   format: `loc_` + zero-padded 8-digit sequence, e.g. `loc_00000001`.
+1. **`brewer_sk` is derived from its own row, never numbered.** It is the
+   lowercase hex md5 of `brewer_natural_key` and `effective_from` joined with
+   `-`, built the way `dbt_utils.generate_surrogate_key(['brewer_natural_key',
+   'effective_from'])` builds its key. For example, `cross_keys_brewing_co`
+   from `2018-03-09` is `7e77ef7ecbc20bc0d0ed29e6df9328fb`. The sequence
+   format used until 2026-09-30 (`bwr_00000001`) renumbered 237 of 253 keys
+   when one row was added, so it must not come back.
+2. **`location_sk` is derived the same way from `location_natural_key`
+   alone** (`dim_location` has no `effective_from`). For example,
+   `cross_keys_brewing_co__williamstown` is
+   `408ad56b8734d2f762cc6e8cdb099537`.
+
+   Both are written by `scripts/research/build_tables.py`; never type one by
+   hand. To add a row, put a temporary token in its `_sk` column and in every
+   bridge or fact row that references it, then run the script. Changing a key
+   column (for example, replacing a `PLACEHOLDER:` `effective_from`) changes
+   that row's `_sk`. The script rewrites every reference to it in the same
+   run, so fact rows stay attached. `--check` exits non-zero if any table is
+   out of date.
 3. **Quote every field that contains any character outside
    `[A-Za-z0-9-]`.** A bare postal code (`08205-9563`) or a bare date
    (`2026-09-01`) stays unquoted; anything with a space, punctuation, or an
@@ -63,7 +83,7 @@ column exists here, and none may be added with guessed values.
    double quotes, with embedded `"` doubled per RFC 4180. **Exception for
    key values:** values in `brewer_sk`, `location_sk`, `brewer_natural_key`,
    and `location_natural_key` stay unquoted when they contain only letters,
-   digits, hyphens, and underscores (e.g. `bwr_00000001`,
+   digits, hyphens, and underscores (e.g. `7e77ef7ecbc20bc0d0ed29e6df9328fb`,
    `cross_keys_brewing_co__williamstown`). Their header names are still
    quoted under the general rule.
 4. **All dates are `yyyy-mm-dd`.** Where the source only supports year or

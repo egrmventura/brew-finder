@@ -49,5 +49,9 @@ pipeline/dbt/.user.yml
 # DuckDB
 *.duckdb
 
+# Python
+__pycache__/
+*.pyc
+
 # Notes
 docs/research/notes/
