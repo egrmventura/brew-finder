@@ -112,3 +112,4 @@ fallback chain specifically instead. This ADR exists because that direction
 overrides constraint 7's default ("stop and ask") for this one backfill; it
 does not establish that asking-per-row is unavailable as an approach in
 general.
+

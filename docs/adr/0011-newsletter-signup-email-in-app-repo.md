@@ -127,3 +127,4 @@ Considered and rejected by the user: the addresses are subscription-signup
 addresses, not credentials, so the plain-text public-history risk profile
 here is treated the same as any other public contact address already
 tracked in these tables (e.g. `website`).
+
