@@ -75,6 +75,7 @@ BARE_KEY_VALUE = re.compile(r"[A-Za-z0-9_-]+")
 DATE = re.compile(r"\d{4}-\d{2}-\d{2}")
 OPEN_END = "9999-12-31"
 UNKNOWN_END = "unknown"
+OPERATING_STATUSES = frozenset({"operating", "closed", "moved_out_of_state"})
 
 
 class BuildError(Exception):
@@ -129,7 +130,7 @@ def derive(tables):
     errors, warnings = [], []
     (brewer_h, brewers), (location_h, locations) = tables[BREWER], tables[LOCATION]
     (bridge_h, bridges), (fact_h, facts) = tables[BRIDGE], tables[FACT]
-    require_columns(BREWER, brewer_h, ["brewer_sk", "brewer_natural_key", "effective_from", "effective_to", "is_current"])
+    require_columns(BREWER, brewer_h, ["brewer_sk", "brewer_natural_key", "effective_from", "effective_to", "is_current", "operating_status"])
     require_columns(LOCATION, location_h, ["location_sk", "location_natural_key"])
     require_columns(BRIDGE, bridge_h, ["brewer_sk", "location_sk", "effective_from", "effective_to"])
     require_columns(FACT, fact_h, ["brewer_sk", "brewer_natural_key"])
@@ -230,16 +231,31 @@ def derive(tables):
     if errors:
         raise BuildError("\n".join(errors))
 
-    # SCD2 rules that need a human decision to fix. Reported, never auto-corrected.
+    # SCD2 rules. Reported, never auto-corrected.
     versions = defaultdict(list)
     for r in new_brewers:
         versions[r["brewer_natural_key"]].append(r)
-    no_current = sorted(k for k, v in versions.items() if sum(r["is_current"] == "true" for r in v) == 0)
-    many_current = sorted(k for k, v in versions.items() if sum(r["is_current"] == "true" for r in v) > 1)
-    if no_current:
-        warnings.append(f"{BREWER}: {len(no_current)} brewer(s) have no is_current = true row: {', '.join(no_current)}")
-    if many_current:
-        warnings.append(f"{BREWER}: brewer(s) with more than one is_current = true row: {', '.join(many_current)}")
+    # Closed-brewer protocol (ADR-0010): exactly one is_current = true row per brewer, and it
+    # is the latest version, whatever its operating_status.
+    for nk, rows in sorted(versions.items()):
+        latest = max(rows, key=lambda r: r["effective_from"])
+        current = [r for r in rows if r["is_current"] == "true"]
+        if len(current) != 1:
+            errors.append(f"{BREWER}: {nk} has {len(current)} is_current = true rows, expected exactly 1")
+        elif current[0] is not latest:
+            errors.append(f"{BREWER}: {nk} is_current row is not its latest version")
+        for r in rows:
+            status = r["operating_status"]
+            if status not in OPERATING_STATUSES:
+                errors.append(f"{BREWER}: {nk} from {r['effective_from']} has operating_status {status!r}, expected one of {sorted(OPERATING_STATUSES)}")
+            elif status == "operating" and r["is_current"] == "true" and r["effective_to"] != OPEN_END:
+                errors.append(f"{BREWER}: {nk} is operating and current but effective_to is {r['effective_to']!r}, expected {OPEN_END}")
+            elif status != "operating" and (r["is_current"] != "true" or r["effective_to"] == OPEN_END):
+                errors.append(f"{BREWER}: {nk} has operating_status {status!r} but is not a current row with a closing effective_to")
+            elif r is not latest and status != "operating":
+                errors.append(f"{BREWER}: {nk} non-latest version has operating_status {status!r}; only the latest may be closed")
+    if errors:
+        raise BuildError("\n".join(errors))
     for nk, rows in sorted(versions.items()):
         rows = sorted(rows, key=lambda r: r["effective_from"])
         for a, b in zip(rows, rows[1:]):

@@ -13,7 +13,8 @@ Four files, decomposed by grain (see `dimensional-grain` skill for why a flat
 - `dim_brewer.csv` — Grain: one row per brewer (`brewer_natural_key`) per identity version, unique on (`brewer_natural_key`, `effective_from`).
   SCD2: a rename produces a new `brewer_sk` under the same
   `brewer_natural_key`; a pure relocation does not (the brewer's own
-  attributes didn't change).
+  attributes didn't change). A closure does not either; it sets
+  `operating_status` on the latest version (rule 6).
 - `dim_location.csv` — Grain: one row per brewer (`brewer_natural_key`) per site, unique on `location_natural_key`.
   A site is a physical premises as far as the research can tell premises
   apart. With no street-address or OSM-id data available yet,
@@ -55,7 +56,7 @@ into the four tables:
 Neither source file has an email or newsletter signup address. No such
 column exists here, and none may be added with guessed values.
 
-## The 5 rules
+## The 6 rules
 
 1. **`brewer_sk` is derived from its own row, never numbered.** It is the
    lowercase hex md5 of `brewer_natural_key` and `effective_from` joined with
@@ -117,6 +118,34 @@ column exists here, and none may be added with guessed values.
    editing it — tooling must never silently truncate, since that destroys
    information rather than just reformatting it.
 
+6. **Closing a brewer sets `operating_status` on its latest version; it never
+   adds a version or clears `is_current`** (ADR-0010). `operating_status` is
+   `operating`, `closed`, or `moved_out_of_state`. To record a closure:
+   1. Confirm the brewer's closure from evidence. A source `reason` of
+      `closed` is evidence; a guess is not.
+   2. On the brewer's latest `dim_brewer` row, set `operating_status` to
+      `closed` (or `moved_out_of_state`), keep `is_current = true`, and set
+      `effective_to` to the closure date. Put the raw value in
+      `effective_to_reference` and its source in `effective_to_basis`. With no
+      closure date, write `unknown`; never a guessed date.
+   3. On the open `bridge_brewer_location` rows for that brewer version, set
+      `effective_to` the same way, `is_current = false`, and
+      `occupancy_reason = closed`.
+   4. Leave `fact_newsletter_target` alone unless the brewer is on the target
+      list. A closed brewer must not be subscribed to, so change its `status`
+      and say why in a note.
+   5. Run `python3 scripts/research/build_tables.py`. It fails if the brewer
+      lacks exactly one current row, if the current row is not the latest
+      version, or if `operating_status` and `effective_to` disagree.
+
+   A closed brewer that reopens under the same `brewer_natural_key` is a new
+   version: `operating_status = operating`, a researched `effective_from` (rule
+   4), `effective_to = 9999-12-31`, and the closed version becomes
+   `is_current = false`. The gap between the two versions is legitimate. If the
+   new occupant is a different brewer, use a new `brewer_natural_key` instead
+   (see the identity-matching rules). Queries for live brewers filter
+   `operating_status = 'operating'`, not `is_current` alone.
+
 ## Identity-matching rules (how rows became brewer/location/bridge rows)
 
 These are mechanical, evidence-based rules — not fuzzy matching, and not a
@@ -147,8 +176,9 @@ source data.
   brewer/location/bridge row (e.g. the Cape May Brewing Company Cape May
   entry, which the source already says is the same single Rio Grande
   premises).
-- **`moved_out_of_state`** rows get a historical (closed) `dim_brewer` row but
-  no current location and no `fact_newsletter_target` row.
+- **`moved_out_of_state`** rows get a `dim_brewer` row with
+  `operating_status = moved_out_of_state`, but no current location and no
+  `fact_newsletter_target` row.
 
 ## Known limitations (flagged, not resolved)
 
