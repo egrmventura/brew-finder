@@ -248,23 +248,43 @@ def derive(tables):
             status = r["operating_status"]
             if status not in OPERATING_STATUSES:
                 errors.append(f"{BREWER}: {nk} from {r['effective_from']} has operating_status {status!r}, expected one of {sorted(OPERATING_STATUSES)}")
-            elif status == "operating" and r["is_current"] == "true" and r["effective_to"] != OPEN_END:
+            elif r is latest and status == "operating" and r["effective_to"] != OPEN_END:
                 errors.append(f"{BREWER}: {nk} is operating and current but effective_to is {r['effective_to']!r}, expected {OPEN_END}")
-            elif status != "operating" and (r["is_current"] != "true" or r["effective_to"] == OPEN_END):
-                errors.append(f"{BREWER}: {nk} has operating_status {status!r} but is not a current row with a closing effective_to")
-            elif r is not latest and status != "operating":
-                errors.append(f"{BREWER}: {nk} non-latest version has operating_status {status!r}; only the latest may be closed")
-    if errors:
-        raise BuildError("\n".join(errors))
+            elif status != "operating" and r["effective_to"] == OPEN_END:
+                errors.append(f"{BREWER}: {nk} has operating_status {status!r} but effective_to {OPEN_END}; a closed version needs its closure date or {UNKNOWN_END}")
+            elif r is not latest and r["is_current"] == "true":
+                errors.append(f"{BREWER}: {nk} version from {r['effective_from']} is is_current but not the latest")
+    # SCD2 tests the CSVs cannot carry in a schema.yml (dimensional-grain § Required tests).
     for nk, rows in sorted(versions.items()):
         rows = sorted(rows, key=lambda r: r["effective_from"])
+        for r in rows:
+            if r["effective_to"] != UNKNOWN_END and not r["effective_from"] < r["effective_to"]:
+                errors.append(f"{BREWER}: {nk} version from {r['effective_from']} has effective_to {r['effective_to']} not after it")
         for a, b in zip(rows, rows[1:]):
             if a["effective_to"] == UNKNOWN_END:
                 warnings.append(f"{BREWER}: {nk} boundary before {b['effective_from']} unverifiable (effective_to unknown)")
             elif a["effective_to"] == OPEN_END or a["effective_to"] > b["effective_from"]:
-                warnings.append(f"{BREWER}: {nk} versions overlap at {b['effective_from']}")
-            elif a["effective_to"] < b["effective_from"]:
-                warnings.append(f"{BREWER}: {nk} gap between {a['effective_to']} and {b['effective_from']}")
+                errors.append(f"{BREWER}: {nk} versions overlap at {b['effective_from']}")
+            elif a["effective_to"] < b["effective_from"] and a["operating_status"] == "operating":
+                errors.append(f"{BREWER}: {nk} gap between {a['effective_to']} and {b['effective_from']} after an operating version; only a closed version may precede a gap")
+    # Fact-to-version rule (README rule 7): the fact's brewer_sk is the version valid at its own
+    # date. A fact with no added_date can only point at a brewer with a single version, where
+    # no date could change the answer.
+    for r in new_facts:
+        nk = brewer_by_sk[r["brewer_sk"]]["brewer_natural_key"] if r["brewer_sk"] in brewer_by_sk else None
+        if nk is None:
+            continue
+        rows = sorted(versions[nk], key=lambda v: v["effective_from"])
+        if not r["added_date"]:
+            if len(rows) != 1:
+                errors.append(f"{FACT}: {nk} has no added_date but {len(rows)} brewer versions, so its brewer_sk is a guess")
+            continue
+        valid = [v for v in rows if v["effective_from"] <= r["added_date"] < (OPEN_END if v["effective_to"] == UNKNOWN_END else v["effective_to"])]
+        valid = [v for v in valid if v["effective_to"] != UNKNOWN_END] or valid[-1:]
+        if not valid or valid[-1]["brewer_sk"] != r["brewer_sk"]:
+            errors.append(f"{FACT}: {nk} added {r['added_date']} points at a brewer_sk that is not the version valid on that date")
+    if errors:
+        raise BuildError("\n".join(errors))
     occupancy = defaultdict(list)
     for r in new_bridges:
         occupancy[(r["brewer_sk"], r["location_sk"])].append(r)

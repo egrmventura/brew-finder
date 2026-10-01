@@ -18,6 +18,7 @@ Four CSVs that hold newsletter-target research until the brewer marts exist in `
   The key is brewer-scoped (`<brewer_natural_key>__<city-slug>`), a stand-in for premises identity until street-address or OSM-id data exists.
 - `bridge_brewer_location.csv` — Grain: one row per brewer version (`brewer_sk`) per location (`location_sk`) per continuous occupancy interval, unique on (`brewer_sk`, `location_sk`, `effective_from`).
 - `fact_newsletter_target.csv` — Grain: one row per brewer (`brewer_natural_key`) on the newsletter-target list, unique on `brewer_natural_key`.
+  A dated row points at the brewer version valid on its `added_date`; an undated row may only point at a brewer with one version (`docs/research/README.md` rule 7).
 
 ## Pipeline/serving split
 

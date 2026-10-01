@@ -29,7 +29,8 @@ version, not a new version.
   the raw value and its source in `effective_to_reference` and
   `effective_to_basis`. If no closure date is known, `effective_to` is the
   literal `unknown`, as before.
-- Only a brewer's latest version may be anything other than `operating`.
+- Only a brewer's latest version may be `is_current`. An earlier version may be
+  `closed` only because the brewer later reopened under the same natural key.
 - `bridge_brewer_location` is unchanged. Its closed occupancy intervals already
   carry `is_current = false` and `occupancy_reason = closed`.
 

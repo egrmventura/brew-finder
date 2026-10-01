@@ -56,7 +56,7 @@ into the four tables:
 Neither source file has an email or newsletter signup address. No such
 column exists here, and none may be added with guessed values.
 
-## The 6 rules
+## The 7 rules
 
 1. **`brewer_sk` is derived from its own row, never numbered.** It is the
    lowercase hex md5 of `brewer_natural_key` and `effective_from` joined with
@@ -145,6 +145,18 @@ column exists here, and none may be added with guessed values.
    new occupant is a different brewer, use a new `brewer_natural_key` instead
    (see the identity-matching rules). Queries for live brewers filter
    `operating_status = 'operating'`, not `is_current` alone.
+
+7. **A fact row points at the brewer version valid on its own date.** A
+   `fact_newsletter_target` row with an `added_date` carries the `brewer_sk`
+   whose `[effective_from, effective_to)` contains that date. A row with no
+   `added_date` (60 today: the 59 `border` rows and one `nj` row, see Known
+   limitations) may only point at a brewer with a single version, where no date
+   could change which row is valid. Never fill in a date to satisfy this rule.
+   There is no `schema.yml` for these CSVs, so `build_tables.py` stands in for
+   the four SCD2 tests: exactly one `is_current` per brewer (rule 6), no
+   overlapping versions, `effective_from` before `effective_to`, and this
+   fact rule. It fails on each. A gap between versions is a warning, because a
+   closed brewer that reopens has one legitimately.
 
 ## Identity-matching rules (how rows became brewer/location/bridge rows)
 
