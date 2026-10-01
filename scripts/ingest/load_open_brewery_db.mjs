@@ -12,7 +12,9 @@
 //
 // Upserts into raw.open_brewery_db_breweries (db/migrations/0002) on the
 // source's own `id`, so re-running is idempotent rather than duplicating
-// rows. dbt's stg_obdb__breweries reads that table through source() only.
+// rows, then deletes rows absent from this fetch (same transaction) so a
+// brewery the source removes does not linger in raw. The load is a full
+// snapshot of New Jersey, which is what makes that delete safe. dbt's stg_obdb__breweries reads that table through source() only.
 import pg from "pg";
 import { describeTarget, resolveDatabaseUrl } from "../db/database-url.mjs";
 
@@ -37,6 +39,9 @@ async function fetchAllNewJersey() {
     }
     if (!res.ok) fail(`API request failed: ${res.status} ${res.statusText} (${url})`);
     const batch = await res.json();
+    if (!Array.isArray(batch)) {
+      fail(`expected a JSON array from ${url}, got: ${JSON.stringify(batch).slice(0, 200)}`);
+    }
     if (batch.length === 0) break;
     rows.push(...batch);
     if (batch.length < PER_PAGE) break;
@@ -115,8 +120,14 @@ try {
       ],
     );
   }
+  const { rowCount: removed } = await client.query(
+    "DELETE FROM raw.open_brewery_db_breweries WHERE id <> ALL($1::text[])",
+    [rows.map((r) => r.id)],
+  );
   await client.query("COMMIT");
-  console.log(`load_open_brewery_db: loaded ${rows.length} row(s) into raw.open_brewery_db_breweries`);
+  console.log(
+    `load_open_brewery_db: loaded ${rows.length} row(s) into raw.open_brewery_db_breweries, removed ${removed} no longer in the source`,
+  );
 } catch (err) {
   await client.query("ROLLBACK").catch(() => {});
   fail(`load failed, rolled back: ${err.message}`);
