@@ -28,7 +28,7 @@ From `git status` (no tracked file changed; HEAD is `005d350`, pushed):
 
 ## Open
 
-- **Loader can delete valid rows** (`scripts/ingest/load_open_brewery_db.mjs:28`, plausible, unconfirmed): it treats the fetched rows as the full New Jersey snapshot and deletes every other row in `raw.open_brewery_db_breweries`. A short or reordered page would delete valid breweries. Only a zero-row fetch is guarded. New Jersey is about 115 rows on one 200-row page, so this is unlikely today. Revisit if the dataset nears one page, if the loader is scheduled, or before relying on the delete. Candidate fixes: check the API's own total, if it exposes one (unchecked), or refuse the delete when the fetch shrinks sharply, which would need a threshold that is a guess.
+- **Loader can delete valid rows** (`scripts/ingest/load_open_brewery_db.mjs:30` fetch, `:124` delete; plausible, unconfirmed): it treats the fetched rows as the full New Jersey snapshot and deletes every other row in `raw.open_brewery_db_breweries`. A short or reordered page would delete valid breweries. Only a zero-row fetch is guarded. New Jersey is about 115 rows on one 200-row page, so this is unlikely today. Revisit if the dataset nears one page, if the loader is scheduled, or before relying on the delete. Candidate fixes: check the API's own total, if it exposes one (unchecked), or refuse the delete when the fetch shrinks sharply, which would need a threshold that is a guess.
 - A second reviewer, not the change's author, still needs to run `constraint-audit`. Blocks merge.
 - Postgres 18 with PostGIS, `db:up` and `db:migrate` remain unrun; `migrate.mjs`'s PostGIS floor check is unobserved.
 - `third_state_brewing` has `effective_to = unknown`, reported by the generator as a warning.
