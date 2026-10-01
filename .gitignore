@@ -55,3 +55,4 @@ __pycache__/
 
 # Notes
 docs/research/notes/
+.claude/settings.local.json
